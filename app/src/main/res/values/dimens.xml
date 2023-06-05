@@ -1,8 +1,35 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="nav_header_vertical_spacing">8dp</dimen>
-    <dimen name="nav_header_height">176dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="hairline">0.5dp</dimen>
+
+    <dimen name="space_3xl">64dp</dimen>
+    <dimen name="space_2xl">48dp</dimen>
+    <dimen name="space_xl">36dp</dimen>
+    <dimen name="space_lg">24dp</dimen>
+    <dimen name="space_md">12dp</dimen>
+    <dimen name="space_sm">8dp</dimen>
+    <dimen name="space_xs">4dp</dimen>
+    <dimen name="space_md_min">-12dp</dimen>
+    <dimen name="space_lg_min">-24dp</dimen>
+    <dimen name="space_xl_min">-56dp</dimen>
+
+
+    <dimen name="size_xl">112dp</dimen>
+    <dimen name="size_lg">64dp</dimen>
+    <dimen name="size_md">24dp</dimen>
+    <dimen name="size_sm">16dp</dimen>
+
+    <dimen name="text_2xl">48sp</dimen>
+    <dimen name="text_xl">36sp</dimen>
+    <dimen name="text_lg">24sp</dimen>
+    <dimen name="text_md">16sp</dimen>
+    <dimen name="text_sm">12sp</dimen>
+
+    <dimen name="elevation_xl">36dp</dimen>
+    <dimen name="elevation_lg">24dp</dimen>
+    <dimen name="elevation_md">12dp</dimen>
+
+    <dimen name="radius_circle">99dp</dimen>
+    <dimen name="radius_squircle_md">24dp</dimen>
+    <dimen name="radius_squircle_sm">24dp</dimen>
 </resources>

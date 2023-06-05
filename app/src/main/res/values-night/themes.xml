@@ -2,15 +2,21 @@
     <!-- Base application theme. -->
     <style name="Theme.SunSavvy" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/zinc_900</item>
+        <item name="colorOnPrimary">@color/zinc_100</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorSecondary">@color/zinc_200</item>
+        <item name="colorSecondaryVariant">@color/zinc_500</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
+        <item name="colorAccent">@color/lavender_300</item>
+        <item name="colorError">@color/red_300</item>
+        <item name="colorSurface">@color/zinc_800</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">?attr/colorPrimary</item>
+        <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">?attr/colorPrimary</item>
     </style>
 </resources>

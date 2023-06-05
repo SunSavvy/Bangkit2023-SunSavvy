@@ -12,14 +12,50 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.bangkit.sunsavvy.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_profile"
+        android:name="com.bangkit.sunsavvy.ui.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.bangkit.sunsavvy.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_settings"
+        android:name="com.bangkit.sunsavvy.ui.settings.SettingsFragment"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_uv"
+        android:name="com.bangkit.sunsavvy.ui.uv.UvFragment"
+        android:label="@string/menu_uv"
+        tools:layout="@layout/fragment_uv" />
+
+    <fragment
+        android:id="@+id/nav_spf_pa"
+        android:name="com.bangkit.sunsavvy.ui.spfpa.SpfpaFragment"
+        android:label="@string/menu_spf_pa"
+        tools:layout="@layout/fragment_spfpa" />
+
+    <fragment
+        android:id="@+id/nav_sun_protection"
+        android:name="com.bangkit.sunsavvy.ui.sunprotection.SunprotectionFragment"
+        android:label="@string/menu_sun_protection"
+        tools:layout="@layout/fragment_sunprotection" />
+
+    <fragment
+        android:id="@+id/nav_skin_type"
+        android:name="com.bangkit.sunsavvy.ui.skintype.SkintypeFragment"
+        android:label="@string/menu_skin_type"
+        tools:layout="@layout/fragment_skintype" />
+
+    <fragment
+        android:id="@+id/nav_campaign"
+        android:name="com.bangkit.sunsavvy.ui.campaign.CampaignFragment"
+        android:label="@string/menu_campaign"
+        tools:layout="@layout/fragment_campaign" />
+
+    <fragment
+        android:id="@+id/nav_about_us"
+        android:name="com.bangkit.sunsavvy.ui.aboutus.AboutusFragment"
+        android:label="@string/menu_about_us"
+        tools:layout="@layout/fragment_aboutus" />
 </navigation>

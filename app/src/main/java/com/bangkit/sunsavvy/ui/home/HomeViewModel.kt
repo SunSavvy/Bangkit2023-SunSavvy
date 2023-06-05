@@ -1,13 +1,20 @@
 package com.bangkit.sunsavvy.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
+    val slogan: MutableLiveData<List<String>> = MutableLiveData()
+    val title: MutableLiveData<String> = MutableLiveData()
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    init {
+        fetchData()
     }
-    val text: LiveData<String> = _text
+
+    private fun fetchData() {
+        title.value = "Hi, Yo!"
+
+        val listSlogan = listOf("slip", "slop", "slap", "seek", "slide")
+        slogan.value = listSlogan
+    }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/space_md">
+
+    <TextView
+        android:id="@+id/slogan_protect_yourself"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_squircle_transparent"
+        android:drawablePadding="@dimen/space_xs"
+        android:fontFamily="@font/montserrat_medium"
+        android:paddingHorizontal="@dimen/space_md"
+        android:paddingVertical="@dimen/space_sm"
+        android:text="slip"
+        android:textAlignment="center"
+        android:textColor="?attr/colorSecondary"
+        android:textSize="@dimen/text_sm"
+        app:drawableTopCompat="@drawable/ic_outfit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

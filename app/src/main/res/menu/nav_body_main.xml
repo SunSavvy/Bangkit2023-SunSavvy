@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        
+        <item android:title="@string/menu_menu">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/ic_home_smile"
+                    android:title="@string/menu_home" />
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/ic_person"
+                    android:title="@string/menu_profile" />
+                <item
+                    android:id="@+id/nav_settings"
+                    android:icon="@drawable/ic_gear"
+                    android:title="@string/menu_setting" />
+
+            </menu>
+
+        </item>
+
+        <item android:title="@string/menu_information">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_uv"
+                    android:icon="@drawable/ic_sun"
+                    android:title="@string/menu_uv" />
+
+                <item
+                    android:id="@+id/nav_spf_pa"
+                    android:icon="@drawable/ic_thermometer"
+                    android:title="@string/menu_spf_pa" />
+
+                <item
+                    android:id="@+id/nav_sun_protection"
+                    android:icon="@drawable/ic_shield"
+                    android:title="@string/menu_sun_protection" />
+
+                <item
+                    android:id="@+id/nav_skin_type"
+                    android:icon="@drawable/ic_feather"
+                    android:title="@string/menu_skin_type" />
+
+                <item
+                    android:id="@+id/nav_campaign"
+                    android:icon="@drawable/ic_megaphone"
+                    android:title="@string/menu_campaign" />
+            </menu>
+
+        </item>
+
+        <item android:title="@string/menu_other">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_share"
+                    android:title="@string/menu_share" />
+
+                <item
+                    android:id="@+id/nav_about_us"
+                    android:icon="@drawable/ic_info"
+                    android:title="@string/menu_about_us" />
+
+            </menu>
+
+        </item>
+
+    </group>
+
+</menu>
