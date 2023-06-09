@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="?attr/colorPrimary"
+    android:background="?attr/colorPrimary"
     android:clipChildren="false"
     tools:context=".ui.home.HomeFragment">
 
@@ -15,30 +15,42 @@
         android:clipChildren="false">
 
         <ImageView
-            android:id="@+id/cloud_1"
+            android:id="@+id/cloud1"
             android:layout_width="164dp"
             android:layout_height="164dp"
-            android:layout_marginStart="180dp"
             android:layout_marginBottom="156dp"
             android:contentDescription="@string/content_cloud"
-            android:src="@drawable/img_cloud_blur36"
+            android:src="@drawable/img_cloud"
             app:layout_constraintBottom_toBottomOf="@+id/sun_moon"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/cloud_2"
-            android:layout_width="380dp"
+            android:id="@+id/cloud2"
+            android:layout_width="264dp"
             android:layout_height="264dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="156dp"
             android:contentDescription="@string/content_cloud"
-            android:src="@drawable/img_cloud_blur24"
+            android:src="@drawable/img_cloud"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/cloud3"
+            android:layout_width="356dp"
+            android:layout_height="356dp"
+            android:layout_marginTop="36dp"
+            android:contentDescription="@string/content_cloud"
+            android:elevation="@dimen/elevation_md"
+            android:src="@drawable/img_cloud"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/sun_moon"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="300dp"
             android:contentDescription="@string/content_sun_moon"
             android:src="@drawable/img_sun_moon"
@@ -75,17 +87,6 @@
             app:layout_constraintStart_toStartOf="@+id/uv_index_level"
             app:layout_constraintTop_toBottomOf="@+id/uv_index_level" />
 
-        <ImageView
-            android:id="@+id/cloud_3"
-            android:layout_width="480dp"
-            android:layout_height="356dp"
-            android:layout_marginStart="116dp"
-            android:layout_marginTop="36dp"
-            android:contentDescription="@string/content_cloud"
-            android:src="@drawable/img_cloud_blur24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/clock"
             android:layout_width="wrap_content"
@@ -103,14 +104,15 @@
             android:id="@+id/meridiem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/space_sm"
+            android:layout_marginStart="@dimen/space_2xs"
+            android:layout_marginBottom="@dimen/space_xsm"
             android:fontFamily="@font/montserrat_semi_bold"
             android:text="@string/placeholder_meridiem"
             android:textAlignment="textStart"
             android:textColor="?attr/colorAccent"
             android:textSize="@dimen/text_sm"
             app:layout_constraintBottom_toBottomOf="@+id/clock"
-            app:layout_constraintStart_toEndOf="@+id/clock" />
+            app:layout_constraintStart_toEndOf="@+id/clock"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/information"
@@ -153,7 +155,8 @@
                 android:id="@+id/uv_index_level_alt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_circle_accent"
+                android:background="@drawable/shape_circle_fill"
+                android:backgroundTint="?attr/colorAccent"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:paddingHorizontal="@dimen/space_md"
                 android:paddingVertical="@dimen/space_sm"
@@ -189,7 +192,7 @@
                 android:textAlignment="textStart"
                 android:textColor="?attr/colorAccent"
                 android:textSize="@dimen/text_md"
-                app:drawableLeftCompat="@drawable/ic_clock_history"
+                app:drawableLeftCompat="@drawable/ic_clock"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_time_to_sunburn" />
 
@@ -258,6 +261,7 @@
             </androidx.cardview.widget.CardView>
 
             <ImageView
+                android:id="@+id/sunscreen"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_marginEnd="-64dp"

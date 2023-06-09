@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +21,10 @@ class UvFragment : Fragment() {
         _binding = FragmentUvBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
+        itemViewModel = ViewModelProvider(this)[UvViewModel::class.java]
+        itemViewModel.items.observe(viewLifecycleOwner) { items ->
+            itemAdapter.setItems(items)
+        }
 
         return root
     }
@@ -31,15 +33,12 @@ class UvFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         itemAdapter = UvAdapter(emptyList())
+        recyclerView = binding.rvUv
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = itemAdapter
         }
 
-        itemViewModel = ViewModelProvider(this)[UvViewModel::class.java]
-        itemViewModel.items.observe(viewLifecycleOwner, Observer { items ->
-            itemAdapter.setItems(items)
-        })
     }
 
     override fun onDestroyView() {

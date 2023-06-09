@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_semi_bold"
-        android:text="@string/view_our_background"
+        android:text="@string/placeholder_subtitle"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="?attr/colorOnPrimary"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_regular"
-        android:text="@string/placeholder"
+        android:text="@string/placeholder_lorem_ipsum"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="?attr/colorSecondary"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_xl"
         android:fontFamily="@font/montserrat_semi_bold"
-        android:text="@string/view_our_team"
+        android:text="@string/placeholder_subtitle"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="?attr/colorOnPrimary"
@@ -51,7 +51,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_social"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/space_md"
@@ -59,6 +59,7 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/head2"
         tools:ignore="ObsoleteLayoutParam"
         tools:listitem="@layout/item_team" />

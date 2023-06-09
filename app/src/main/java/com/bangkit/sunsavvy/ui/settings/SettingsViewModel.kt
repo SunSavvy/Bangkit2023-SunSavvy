@@ -1,12 +1,17 @@
 package com.bangkit.sunsavvy.ui.settings
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.bangkit.sunsavvy.data.UserRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 
-class SettingsViewModel : ViewModel() {
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is Settings Fragment"
+class SettingsViewModel constructor(private val userRepository: UserRepository) : ViewModel() {
+    val getTheme: Flow<Boolean> = userRepository.getTheme()
+
+    fun saveThemeSetting(darkModeState: Boolean) {
+        viewModelScope.launch {
+            userRepository.saveTheme(darkModeState)
+        }
     }
-    val text: LiveData<String> = _text
 }

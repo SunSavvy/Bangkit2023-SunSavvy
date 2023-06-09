@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:paddingBottom="@dimen/space_lg">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_bio"
+        style="@style/Card.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:outlineSpotShadowColor="?attr/colorOnSecondary"
+        app:cardCornerRadius="@dimen/radius_squircle_md"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnusedAttribute">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/space_lg">
+
+            <TextView
+                android:id="@+id/txt_spf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_sm_min"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="@string/view_spf"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/colorAccent"
+                android:textSize="@dimen/text_sm"
+                app:layout_constraintBottom_toTopOf="@+id/spf"
+                app:layout_constraintEnd_toEndOf="@+id/spf"
+                app:layout_constraintStart_toStartOf="@+id/spf" />
+
+            <TextView
+                android:id="@+id/spf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/placeholder_spf_number"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/colorAccent"
+                android:textSize="@dimen/text_xl"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/pa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xs_min"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/placeholder_pa"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/colorAccent"
+                android:textSize="@dimen/text_sm"
+                app:layout_constraintEnd_toEndOf="@+id/spf"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spf" />
+
+            <TextView
+                android:id="@+id/txt_protection_against"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/view_protection_against"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="?attr/colorSecondaryVariant"
+                android:textSize="@dimen/text_sm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_uv_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="@string/view_uv_b"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/colorSecondary"
+                android:textSize="@dimen/text_sm"
+                app:layout_constraintBottom_toTopOf="@+id/uv_b"
+                app:layout_constraintEnd_toEndOf="@+id/uv_b"
+                app:layout_constraintStart_toStartOf="@+id/uv_b" />
+
+            <TextView
+                android:id="@+id/uv_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/placeholder_uv"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/colorSecondary"
+                android:textSize="@dimen/text_lg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_uv_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="@string/view_uv_b"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/colorSecondary"
+                android:textSize="@dimen/text_sm"
+                app:layout_constraintBottom_toTopOf="@+id/uv_a"
+                app:layout_constraintEnd_toEndOf="@+id/uv_a"
+                app:layout_constraintStart_toStartOf="@+id/uv_a" />
+
+            <TextView
+                android:id="@+id/uv_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_md"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/placeholder_uv"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/colorSecondary"
+                android:textSize="@dimen/text_lg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/uv_b" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

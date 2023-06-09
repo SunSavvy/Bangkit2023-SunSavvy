@@ -14,9 +14,6 @@
         <!-- Customize your theme here. -->
         <item name="colorAccent">@color/lavender_300</item>
         <item name="colorError">@color/red_300</item>
-        <item name="colorSurface">@color/zinc_800</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:navigationBarColor">?attr/colorPrimary</item>
-        <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">?attr/colorPrimary</item>
     </style>
 </resources>

@@ -52,7 +52,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     }
 
     private fun setTextViewStyle(textView: TextView, drawableResId: Int) {
-        val backgroundActive = R.drawable.shape_squircle_accent
+        val backgroundActive = R.drawable.shape_squircle_fill
         val primaryColor = resolveThemeAttribute(textView.context, android.R.attr.colorPrimary)
 
         textView.setBackgroundResource(backgroundActive)

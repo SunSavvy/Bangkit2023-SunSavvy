@@ -8,11 +8,14 @@
     <dimen name="space_lg">24dp</dimen>
     <dimen name="space_md">12dp</dimen>
     <dimen name="space_sm">8dp</dimen>
+    <dimen name="space_xsm">6dp</dimen>
     <dimen name="space_xs">4dp</dimen>
+    <dimen name="space_2xs">2dp</dimen>
+    <dimen name="space_xs_min">-4dp</dimen>
+    <dimen name="space_sm_min">-8dp</dimen>
     <dimen name="space_md_min">-12dp</dimen>
     <dimen name="space_lg_min">-24dp</dimen>
     <dimen name="space_xl_min">-56dp</dimen>
-
 
     <dimen name="size_xl">112dp</dimen>
     <dimen name="size_lg">64dp</dimen>
@@ -31,5 +34,6 @@
 
     <dimen name="radius_circle">99dp</dimen>
     <dimen name="radius_squircle_md">24dp</dimen>
-    <dimen name="radius_squircle_sm">24dp</dimen>
+    <dimen name="radius_squircle_sm">12dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

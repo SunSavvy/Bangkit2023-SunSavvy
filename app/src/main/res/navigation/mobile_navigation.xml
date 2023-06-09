@@ -18,12 +18,6 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/nav_settings"
-        android:name="com.bangkit.sunsavvy.ui.settings.SettingsFragment"
-        android:label="@string/menu_setting"
-        tools:layout="@layout/fragment_settings" />
-
-    <fragment
         android:id="@+id/nav_uv"
         android:name="com.bangkit.sunsavvy.ui.uv.UvFragment"
         android:label="@string/menu_uv"

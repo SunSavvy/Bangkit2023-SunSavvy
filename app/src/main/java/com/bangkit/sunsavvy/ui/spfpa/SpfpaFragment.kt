@@ -23,10 +23,10 @@ class SpfpaFragment : Fragment() {
         _binding = FragmentSpfpaBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.text
-        spfpaViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.text
+//        spfpaViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 

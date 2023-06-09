@@ -6,24 +6,42 @@
         <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/zinc_800</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/zinc_500</item>
-        <item name="colorSecondaryVariant">@color/zinc_400</item>
-        <item name="colorOnSecondary">@color/zinc_400</item>
+        <item name="colorSecondary">@color/zinc_700</item>
+        <item name="colorSecondaryVariant">@color/zinc_500</item>
+        <item name="colorOnSecondary">@color/zinc_300</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
+        <item name="colorSurface">?attr/colorPrimary</item>
         <item name="colorAccent">@color/lavender_400</item>
         <item name="colorError">@color/red_400</item>
-        <item name="colorSurface">@color/zinc_100</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:navigationBarColor">?attr/colorPrimary</item>
         <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">?attr/colorPrimary</item>
     </style>
 
-    <!-- NoActionBar -->
-    <style name="Theme.SunSavvy.NoActionBar">
+    <!-- SecondaryTheme -->
+    <style name="Theme.SunSavvy.NoActionBar" parent="Theme.SunSavvy">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.SunSavvy.FullScreen" parent="Theme.SunSavvy">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:ignore="NewApi">shortEdges</item>
+    </style>
+
+    <style name="Theme.SunSavvy.Splash" parent="Theme.SunSavvy">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:ignore="NewApi">shortEdges</item>
     </style>
 
     <!-- AppDrawer -->
@@ -33,8 +51,48 @@
         <item name="android:labelTextSize">@dimen/text_md</item>
         <item name="android:textColor">?attr/colorSecondary</item>
         <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:actionBarItemBackground">@null</item>
         <item name="android:drawablePadding">@dimen/space_md</item>
         <item name="drawableTint">?attr/colorSecondary</item>
+    </style>
+
+    <!-- InputField -->
+    <style name="TextInputLayoutAppearance" parent="Widget.Design.TextInputLayout">
+        <item name="colorControlNormal">?attr/colorPrimary</item>
+        <item name="colorControlActivated">?attr/colorAccent</item>
+        <item name="colorControlHighlight">?attr/colorAccent</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.Custom" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:theme">@style/TextInputLayoutAppearance</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_squircle_sm</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_squircle_sm</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_squircle_sm</item>
+        <item name="boxCornerRadiusTopStart">@dimen/radius_squircle_sm</item>
+        <item name="boxStrokeColor">?attr/colorAccent</item>
+        <item name="boxStrokeErrorColor">?attr/colorError</item>
+        <item name="errorEnabled">true</item>
+        <item name="hintAnimationEnabled">true</item>
+        <item name="hintTextColor">?attr/colorAccent</item>
+        <item name="android:textColorHint">?attr/colorSecondaryVariant</item>
+        <item name="colorPrimary">?attr/colorOnPrimary</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu.Custom" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_squircle_sm</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_squircle_sm</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_squircle_sm</item>
+        <item name="boxCornerRadiusTopStart">@dimen/radius_squircle_sm</item>
+        <item name="boxStrokeColor">?attr/colorAccent</item>
+        <item name="boxStrokeErrorColor">?attr/colorError</item>
+        <item name="boxBackgroundColor">?attr/colorPrimaryVariant</item>
+        <item name="endIconTint">?attr/colorSecondary</item>
+        <item name="errorEnabled">true</item>
+        <item name="hintAnimationEnabled">true</item>
+        <item name="hintTextColor">?attr/colorAccent</item>
+        <item name="android:textColorHint">?attr/colorSecondaryVariant</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
     </style>
 
     <!-- CardView -->
@@ -43,4 +101,5 @@
         <item name="cardElevation">@dimen/elevation_lg</item>
         <item name="cardBackgroundColor">?attr/colorPrimaryVariant</item>
     </style>
+
 </resources>

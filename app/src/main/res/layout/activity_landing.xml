@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:context=".LandingActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sky"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:paddingTop="@dimen/space_3xl">
+
+        <ImageView
+            android:id="@+id/cloud1"
+            android:layout_width="164dp"
+            android:layout_height="164dp"
+            android:layout_marginBottom="156dp"
+            android:contentDescription="@string/content_cloud"
+            android:src="@drawable/img_cloud"
+            app:layout_constraintBottom_toBottomOf="@+id/sun_moon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/cloud2"
+            android:layout_width="264dp"
+            android:layout_height="264dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/content_cloud"
+            android:src="@drawable/img_cloud"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/cloud3"
+            android:layout_width="356dp"
+            android:layout_height="356dp"
+            android:layout_marginTop="36dp"
+            android:contentDescription="@string/content_cloud"
+            android:elevation="@dimen/elevation_md"
+            android:src="@drawable/img_cloud"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/sun_moon"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:contentDescription="@string/content_sun_moon"
+            android:src="@drawable/img_sun_moon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_2xl"
+            android:layout_marginTop="@dimen/space_lg_min"
+            android:fontFamily="@font/news_bold_bt"
+            android:lines="2"
+            android:text="@string/app_name_title"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="?attr/colorAccent"
+            android:textSize="@dimen/text_2xl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sun_moon" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_landing"
+            style="@style/Card.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_lg"
+            android:clipChildren="false"
+            android:outlineSpotShadowColor="?attr/colorOnSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_name"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="UnusedAttribute">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/wrapper_landing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space_lg">
+
+                <TextView
+                    android:id="@+id/title_welcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/view_welcome"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/text_xl"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/subtitle_welcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xl"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:text="@string/view_subtitle_welcome"
+                    android:textAlignment="textStart"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="@dimen/text_md"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title_welcome" />
+
+                <TextView
+                    android:id="@+id/trivia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="@string/view_trivia"
+                    android:textAlignment="textStart"
+                    android:textColor="?attr/colorSecondaryVariant"
+                    android:textSize="@dimen/text_sm"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/subtitle_welcome" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_login"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xl"
+                    android:layout_marginBottom="@dimen/space_md"
+                    android:background="@drawable/shape_circle_fill"
+                    android:backgroundTint="?attr/colorAccent"
+                    android:elevation="@dimen/elevation_md"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:letterSpacing="0"
+                    android:outlineSpotShadowColor="?attr/colorOnSecondary"
+                    android:text="@string/button_login"
+                    android:textAllCaps="false"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="@dimen/text_md"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
+                    app:layout_constraintTop_toBottomOf="@+id/trivia"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_sign_up"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_md"
+                    android:background="@drawable/shape_circle_fill"
+                    android:backgroundTint="?attr/colorPrimaryVariant"
+                    android:elevation="@dimen/zero"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:letterSpacing="0"
+                    android:text="@string/button_sign_up"
+                    android:textAllCaps="false"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="@dimen/text_md"
+                    app:layout_constraintBottom_toTopOf="@+id/txt_or"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_or"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_sm"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="@string/view_or"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorSecondaryVariant"
+                    android:textSize="@dimen/text_sm"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_google"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:id="@+id/linea"
+                    android:layout_width="@dimen/size_xl"
+                    android:layout_height="@dimen/hairline"
+                    android:background="?attr/colorSecondaryVariant"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_or"
+                    app:layout_constraintEnd_toStartOf="@+id/txt_or"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txt_or" />
+
+                <View
+                    android:id="@+id/lineb"
+                    android:layout_width="@dimen/size_xl"
+                    android:layout_height="@dimen/hairline"
+                    android:background="?attr/colorSecondaryVariant"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_or"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/txt_or"
+                    app:layout_constraintTop_toTopOf="@+id/txt_or" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_google"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_circle_fill"
+                    android:backgroundTint="?attr/colorPrimaryVariant"
+                    android:drawableStart="@drawable/ic_google"
+                    android:elevation="@dimen/elevation_md"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:letterSpacing="0"
+                    android:outlineSpotShadowColor="?attr/colorOnSecondary"
+                    android:paddingHorizontal="@dimen/space_lg"
+                    android:text="@string/button_google"
+                    android:textAllCaps="false"
+                    android:textColor="?attr/colorSecondary"
+                    android:textSize="@dimen/text_md"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
