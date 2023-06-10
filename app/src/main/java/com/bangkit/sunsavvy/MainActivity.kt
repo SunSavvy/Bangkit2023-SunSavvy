@@ -1,10 +1,12 @@
 package com.bangkit.sunsavvy
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -16,6 +18,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bangkit.sunsavvy.databinding.ActivityMainBinding
 import com.bangkit.sunsavvy.ui.settings.SettingsActivity
+import com.bangkit.sunsavvy.utils.StringConverter
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
@@ -24,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerLayout: DrawerLayout
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -51,6 +55,22 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
+
+        val headerView = binding.navView.getHeaderView(0)
+        val username = headerView.findViewById<TextView>(R.id.username)
+        val email = headerView.findViewById<TextView>(R.id.email)
+        val skinType = headerView.findViewById<TextView>(R.id.skin_type)
+
+//        TODO("Fetch this data from db")
+        val dataUsername = "Uzumaki Icha"
+        val dataEmail = "kyubi.buntung@rawr.com"
+        val dataSkinType = 4
+
+        username.text = dataUsername
+        email.text = dataEmail
+
+        val romanNumeral = StringConverter.arabicToRoman(dataSkinType)
+        skinType.text = romanNumeral
 
         swipeRefreshLayout.setOnRefreshListener {
             Handler().postDelayed({

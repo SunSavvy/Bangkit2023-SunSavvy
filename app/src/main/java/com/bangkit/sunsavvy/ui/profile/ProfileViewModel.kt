@@ -5,8 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ProfileViewModel : ViewModel() {
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is Profile Fragment"
+    val username: MutableLiveData<String> = MutableLiveData()
+    val email: MutableLiveData<String> = MutableLiveData()
+    val skinType: MutableLiveData<Int> = MutableLiveData()
+
+    init {
+        fetchData()
     }
-    val text: LiveData<String> = _text
+
+    private fun fetchData() {
+        username.value = "Uzumaki Icha"
+        email.value = "kyubi.buntung@rawr.com"
+        skinType.value = 2
+    }
 }

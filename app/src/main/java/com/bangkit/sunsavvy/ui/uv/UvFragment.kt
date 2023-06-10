@@ -22,8 +22,8 @@ class UvFragment : Fragment() {
         val root: View = binding.root
 
         itemViewModel = ViewModelProvider(this)[UvViewModel::class.java]
-        itemViewModel.items.observe(viewLifecycleOwner) { items ->
-            itemAdapter.setItems(items)
+        itemViewModel.information.observe(viewLifecycleOwner) { information ->
+            itemAdapter.setItems(information)
         }
 
         return root

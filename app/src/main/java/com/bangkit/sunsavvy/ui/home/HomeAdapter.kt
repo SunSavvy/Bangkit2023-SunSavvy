@@ -2,6 +2,7 @@ package com.bangkit.sunsavvy.ui.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -35,7 +36,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val textView: TextView = itemView.findViewById(R.id.slogan_protect_yourself)
+        private val slogan: TextView = itemView.findViewById(R.id.slogan_protect_yourself)
 
         fun bind(item: String) {
             val sloganId = when (adapterPosition) {
@@ -46,18 +47,29 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
                 4 -> R.drawable.ic_tree
                 else -> throw IndexOutOfBoundsException("Invalid item position")
             }
-            setTextViewStyle(textView, sloganId)
-            textView.text = item
+            isActive(slogan, sloganId)
+            slogan.text = item
         }
     }
 
-    private fun setTextViewStyle(textView: TextView, drawableResId: Int) {
-        val backgroundActive = R.drawable.shape_squircle_fill
-        val primaryColor = resolveThemeAttribute(textView.context, android.R.attr.colorPrimary)
+    @SuppressLint("InlinedApi")
+    private fun isActive(textView: TextView, drawableResId: Int) {
+        val colorPrimary = resolveThemeAttribute(textView.context, android.R.attr.colorPrimary)
+        val colorAccent = resolveThemeAttribute(textView.context, android.R.attr.colorAccent)
 
-        textView.setBackgroundResource(backgroundActive)
-        textView.setTextColor(primaryColor)
-        setCompoundDrawableWithTint(textView, drawableResId, primaryColor)
+        textView.backgroundTintList = ColorStateList.valueOf(colorAccent)
+        textView.setTextColor(colorPrimary)
+        setCompoundDrawableWithTint(textView, drawableResId, colorPrimary)
+    }
+
+    @SuppressLint("InlinedApi")
+    private fun isInactive(textView: TextView, drawableResId: Int) {
+        val colorSecondary = resolveThemeAttribute(textView.context, android.R.attr.colorSecondary)
+        val colorTransparent = ContextCompat.getColor(textView.context, R.color.transparent)
+
+        textView.backgroundTintList = ColorStateList.valueOf(colorTransparent)
+        textView.setTextColor(colorSecondary)
+        setCompoundDrawableWithTint(textView, drawableResId, colorSecondary)
     }
 
     private fun setCompoundDrawableWithTint(view: TextView, drawableResId: Int, tint: Int) {

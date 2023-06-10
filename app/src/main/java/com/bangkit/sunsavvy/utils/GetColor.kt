@@ -25,6 +25,14 @@ class GetColor {
             return color
         }
 
+        fun getSecondaryColor(context: Context): Int {
+            val typedValue = TypedValue()
+            val typedArray = context.obtainStyledAttributes(typedValue.data, intArrayOf(R.attr.colorSecondary))
+            val color = typedArray.getColor(0, 0)
+            typedArray.recycle()
+            return color
+        }
+
         fun getAccentColor(context: Context): Int {
             val typedValue = TypedValue()
             val typedArray = context.obtainStyledAttributes(typedValue.data, intArrayOf(R.attr.colorAccent))

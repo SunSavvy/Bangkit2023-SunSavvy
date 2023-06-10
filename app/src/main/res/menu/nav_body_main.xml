@@ -60,11 +60,6 @@
             <menu>
 
                 <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_share"
-                    android:title="@string/menu_share" />
-
-                <item
                     android:id="@+id/nav_about_us"
                     android:icon="@drawable/ic_info"
                     android:title="@string/menu_about_us" />

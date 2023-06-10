@@ -1,17 +1,11 @@
 package com.bangkit.sunsavvy.ui.settings
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.bangkit.sunsavvy.data.UserRepository
+import android.content.SharedPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 
-class SettingsViewModel constructor(private val userRepository: UserRepository) : ViewModel() {
-    val getTheme: Flow<Boolean> = userRepository.getTheme()
+class SettingsViewModel : ViewModel() {
 
-    fun saveThemeSetting(darkModeState: Boolean) {
-        viewModelScope.launch {
-            userRepository.saveTheme(darkModeState)
-        }
-    }
 }

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -23,7 +24,7 @@
             android:label="@string/title_activity_splash"
             android:theme="@style/Theme.SunSavvy.NoActionBar" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".auth.ui.SplashActivity"
             android:exported="true"
             android:label="@string/title_activity_splash"
             android:theme="@style/Theme.SunSavvy.Splash">
@@ -39,24 +40,24 @@
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.SunSavvy.NoActionBar" />
         <activity
-            android:name=".LandingActivity"
+            android:name=".auth.ui.LandingActivity"
             android:exported="false"
             android:label="@string/title_activity_landing"
             android:theme="@style/Theme.SunSavvy.FullScreen" />
         <activity
-            android:name=".auth.LoginActivity"
+            android:name=".auth.ui.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.SunSavvy.FullScreen"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".auth.SignupActivity"
+            android:name=".auth.ui.SignupActivity"
             android:exported="false"
             android:label="@string/title_activity_signup"
             android:theme="@style/Theme.SunSavvy.FullScreen"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".auth.RegisterActivity"
+            android:name=".auth.ui.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.SunSavvy.FullScreen"

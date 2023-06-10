@@ -1,6 +1,8 @@
 package com.bangkit.sunsavvy.ui.home
 
 import android.Manifest
+import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
@@ -10,6 +12,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -18,7 +21,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.sunsavvy.databinding.FragmentHomeBinding
-import com.bangkit.sunsavvy.utils.CloudAnimator
+import com.bangkit.sunsavvy.utils.Animator
+import com.bangkit.sunsavvy.utils.StringConverter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import java.io.IOException
@@ -37,22 +41,46 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var adapter: HomeAdapter
     private lateinit var viewModel: HomeViewModel
+
     private val timeFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
     private val meridiemFormat = SimpleDateFormat("a", Locale.getDefault())
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var timeRunnable: Runnable
-    private lateinit var cloudAnimators: List<CloudAnimator>
+    private lateinit var cloudAnimators: List<Animator>
     private val speedMultipliers = listOf(0.1f, 0.3f, 0.5f)
     var fusedLocationProviderClient: FusedLocationProviderClient? = null
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
-        viewModel.title.observe(viewLifecycleOwner) { title ->
-            (requireActivity() as AppCompatActivity).supportActionBar?.title = title
+        viewModel.username.observe(viewLifecycleOwner) { username ->
+            val frontName = username.split(" ")[0]
+            (requireActivity() as AppCompatActivity).supportActionBar?.title = "Hi, $frontName"
+        }
+        viewModel.uvIndex.observe(viewLifecycleOwner) { uvIndex ->
+            binding.uvIndexLevel.text = uvIndex.toString()
+            binding.uvIndexLevelAlt.text = uvIndex.toString()
+        }
+        viewModel.uvCategory.observe(viewLifecycleOwner) { uvCategory ->
+            binding.uvCategory.text = uvCategory
+        }
+        viewModel.sunburnTime.observe(viewLifecycleOwner) { sunburnTime ->
+            binding.sunburnTime.text = sunburnTime.toString()
+        }
+        viewModel.skinType.observe(viewLifecycleOwner) { skinType ->
+            val romanNumeral = StringConverter.arabicToRoman(skinType)
+            binding.skinType.text = romanNumeral
+        }
+        viewModel.pa.observe(viewLifecycleOwner) { pa ->
+            val paPlus = "+".repeat(pa)
+            binding.pa.text = "PA $paPlus"
+        }
+        viewModel.spf.observe(viewLifecycleOwner) { spf ->
+            binding.spf.text = "SPF $spf"
         }
         viewModel.slogan.observe(viewLifecycleOwner) { items ->
             adapter.setItems(items)
@@ -70,8 +98,9 @@ class HomeFragment : Fragment() {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         getLastLocation()
-        animateCloud()
         getTimeNow()
+        animateCloud()
+        animateFloating()
     }
 
     override fun onResume() {
@@ -93,10 +122,23 @@ class HomeFragment : Fragment() {
 
     private fun animateCloud() {
         val clouds = listOf(binding.cloud1, binding.cloud2, binding.cloud3)
-        cloudAnimators = clouds.zip(speedMultipliers).map { (cloud, speedMultiplier) -> CloudAnimator(cloud, resources.displayMetrics.widthPixels, speedMultiplier) }
+        cloudAnimators = clouds.zip(speedMultipliers).map { (cloud, speedMultiplier) -> Animator(cloud, resources.displayMetrics.widthPixels, speedMultiplier) }
 
         cloudAnimators.forEach { it.startAnimation() }
     }
+
+    private fun animateFloating() {
+        val animDuration = 2000L
+        val animDistance = 20f
+
+        val animator = ObjectAnimator.ofFloat(binding.sunscreen, View.TRANSLATION_Y, 0f, animDistance)
+        animator.duration = animDuration
+        animator.interpolator = AccelerateDecelerateInterpolator()
+        animator.repeatCount = ObjectAnimator.INFINITE
+        animator.repeatMode = ObjectAnimator.REVERSE
+        animator.start()
+    }
+
 
     private fun getTimeNow() {
         val currentTime = timeFormat.format(Date())
@@ -129,7 +171,7 @@ class HomeFragment : Fragment() {
                     val addresses: List<Address>?
                     try {
                         addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                        binding.location.text = addresses!![0].locality
+                        binding.location.text = addresses!![0].adminArea
                     } catch (e: IOException) {
                         e.printStackTrace()
                     }

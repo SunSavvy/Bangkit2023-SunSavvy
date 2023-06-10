@@ -21,7 +21,6 @@
     <string name="menu_skin_type">Skin Type</string>
     <string name="menu_campaign">Campaign</string>
     <string name="menu_other">Other</string>
-    <string name="menu_share">Share</string>
     <string name="menu_about_us">About Us</string>
 
     <string name="content_cloud">cloud</string>
@@ -52,6 +51,7 @@
     <string name="view_pa">PA</string>
     <string name="view_uv_a">UV A</string>
     <string name="view_uv_b">UV B</string>
+    <string name="view_skin_type">Skin Type</string>
     <string name="view_protection_against">Protection Against</string>
     <string name="view_protect_yourself">Protect Yourself</string>
     <string name="view_protection_level">Protection Level</string>
@@ -60,7 +60,7 @@
     <string name="view_cohort_md">Bangkit 2023\nMobile Development</string>
     <string name="view_cohort_cc">Bangkit 2023\nCloud Computing</string>
     <string name="view_cohort_ml">Bangkit 2023\nMachine Learning</string>
-    <string name="view_time_to_sunburn">Time to Sunburn</string>
+    <string name="view_sunburn_time">Time to Sunburn</string>
 
     <string name="button_login">Login</string>
     <string name="button_sign_up">Sign-Up</string>
@@ -87,14 +87,14 @@
     <string name="placeholder_location">Bandung</string>
     <string name="placeholder_uv_index_level">6.0</string>
     <string name="placeholder_uv_category">Medium UV Index</string>
-    <string name="placeholder_time_to_sunburn">25 Minutes</string>
+    <string name="placeholder_sunburn_time">25 Minutes</string>
     <string name="placeholder_pa">PA++</string>
     <string name="placeholder_spf">SPF 50</string>
     <string name="placeholder_spf_number">50</string>
     <string name="placeholder_uv">60%</string>
     <string name="placeholder_head">Head</string>
     <string name="placeholder_body">Body</string>
-    <string name="placeholder_skin_type">Oily</string>
+    <string name="placeholder_skin_type">IV</string>
     <string name="placeholder_subtitle">This is Title</string>
     <string name="placeholder_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus dui nec risus. Maecenas non sodales nisi, vel dictum dolor.</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.bangkit.sunsavvy.model
+package com.bangkit.sunsavvy.data.model
 
 data class UvModel(
     val pa: Int = 0,

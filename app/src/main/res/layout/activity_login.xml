@@ -7,7 +7,7 @@
     android:background="?attr/colorPrimary"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context=".auth.LoginActivity">
+    tools:context=".auth.ui.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sky"
@@ -113,7 +113,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_email"
+                    android:id="@+id/box_email"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.Custom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -125,6 +125,7 @@
                     app:startIconDrawable="@drawable/ic_at">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints="emailAddress"
@@ -137,18 +138,19 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_password"
+                    android:id="@+id/box_password"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.Custom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_password"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/input_email"
+                    app:layout_constraintTop_toBottomOf="@+id/box_email"
                     app:passwordToggleEnabled="true"
                     app:startIconDrawable="@drawable/ic_key">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints="password"
@@ -180,7 +182,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/txt_sign_up"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/input_password"/>
+                    app:layout_constraintTop_toBottomOf="@+id/box_password"/>
 
                 <TextView
                     android:id="@+id/txt_sign_up"

@@ -1,21 +1,19 @@
-package com.bangkit.sunsavvy
+package com.bangkit.sunsavvy.auth.ui
 
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.bangkit.sunsavvy.auth.LoginActivity
-import com.bangkit.sunsavvy.auth.SignupActivity
 import com.bangkit.sunsavvy.databinding.ActivityLandingBinding
 import com.bangkit.sunsavvy.utils.OnPressed
-import com.bangkit.sunsavvy.utils.CloudAnimator
+import com.bangkit.sunsavvy.utils.Animator
 import com.bangkit.sunsavvy.utils.GetColor.Companion.getAccentColor
 import com.bangkit.sunsavvy.utils.GetColor.Companion.getPrimaryVariantColor
 
 class LandingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLandingBinding
-    private lateinit var cloudAnimators: List<CloudAnimator>
+    private lateinit var cloudAnimators: List<Animator>
     private val speedMultipliers = listOf(0.1f, 0.3f, 0.5f)
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -62,7 +60,7 @@ class LandingActivity : AppCompatActivity() {
 
     private fun animateCloud() {
         val clouds = listOf(binding.cloud1, binding.cloud2, binding.cloud3)
-        cloudAnimators = clouds.zip(speedMultipliers).map { (cloud, speedMultiplier) -> CloudAnimator(cloud, resources.displayMetrics.widthPixels, speedMultiplier) }
+        cloudAnimators = clouds.zip(speedMultipliers).map { (cloud, speedMultiplier) -> Animator(cloud, resources.displayMetrics.widthPixels, speedMultiplier) }
 
         cloudAnimators.forEach { it.startAnimation() }
     }

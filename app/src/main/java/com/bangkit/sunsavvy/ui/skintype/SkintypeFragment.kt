@@ -13,11 +13,7 @@ class SkintypeFragment : Fragment() {
     private var _binding: FragmentSkintypeBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val skintypeViewModel = ViewModelProvider(this)[SkintypeViewModel::class.java]
 
         _binding = FragmentSkintypeBinding.inflate(inflater, container, false)
@@ -27,6 +23,7 @@ class SkintypeFragment : Fragment() {
         skintypeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
         return root
     }
 

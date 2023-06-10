@@ -1,20 +1,22 @@
 package com.bangkit.sunsavvy.ui.uv
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bangkit.sunsavvy.model.InformationModel
+import com.bangkit.sunsavvy.data.model.InformationModel
 
 class UvViewModel : ViewModel() {
-    private val _items = MutableLiveData<List<InformationModel>>()
-    val items: LiveData<List<InformationModel>> = _items
+    val information: MutableLiveData<List<InformationModel>> = MutableLiveData()
 
     init {
+        fetchData()
+    }
+
+    private fun fetchData() {
         val itemList = listOf(
             InformationModel("Head 1", "Body 1"),
             InformationModel("Head 2", "Body 2"),
             InformationModel("Head 3", "Body 3")
         )
-        _items.value = itemList
+        information.value = itemList
     }
 }

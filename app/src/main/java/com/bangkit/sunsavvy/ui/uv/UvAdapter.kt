@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.model.InformationModel
+import com.bangkit.sunsavvy.data.model.InformationModel
 
 class UvAdapter(private var items: List<InformationModel>) : RecyclerView.Adapter<UvAdapter.ItemViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")
@@ -31,12 +31,12 @@ class UvAdapter(private var items: List<InformationModel>) : RecyclerView.Adapte
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val headerTextView: TextView = itemView.findViewById(R.id.head)
-        private val bodyTextView: TextView = itemView.findViewById(R.id.body)
+        private val header: TextView = itemView.findViewById(R.id.head)
+        private val body: TextView = itemView.findViewById(R.id.body)
 
         fun bind(item: InformationModel) {
-            headerTextView.text = item.header
-            bodyTextView.text = item.body
+            header.text = item.header
+            body.text = item.body
         }
     }
 }

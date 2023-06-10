@@ -14,6 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_lg"
+        android:background="@drawable/shape_circle_fill"
+        android:backgroundTint="?attr/colorAccent"
         android:outlineSpotShadowColor="?attr/colorOnSecondary"
         app:cardCornerRadius="@dimen/radius_circle"
         app:cardElevation="@dimen/elevation_xl"
@@ -26,7 +28,6 @@
             android:layout_width="@dimen/size_xl"
             android:layout_height="@dimen/size_xl"
             android:contentDescription="@string/content_picture"
-            android:src="@drawable/shape_circle_fill"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -99,38 +100,34 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/content_social"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_question" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <ImageView
                 android:id="@+id/social2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/space_md"
+                android:layout_marginEnd="@dimen/space_lg"
                 android:contentDescription="@string/content_social"
                 app:layout_constraintEnd_toStartOf="@+id/social1"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_question" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <ImageView
                 android:id="@+id/social3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/space_md"
+                android:layout_marginEnd="@dimen/space_lg"
                 android:contentDescription="@string/content_social"
                 app:layout_constraintEnd_toStartOf="@+id/social2"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_question" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <ImageView
                 android:id="@+id/social4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/space_md"
+                android:layout_marginEnd="@dimen/space_lg"
                 android:contentDescription="@string/content_social"
                 app:layout_constraintEnd_toStartOf="@+id/social3"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_question" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

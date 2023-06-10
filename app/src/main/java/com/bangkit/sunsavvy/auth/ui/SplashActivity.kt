@@ -1,4 +1,4 @@
-package com.bangkit.sunsavvy
+package com.bangkit.sunsavvy.auth.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
+import com.bangkit.sunsavvy.R
 import com.bangkit.sunsavvy.databinding.ActivitySplashBinding
 
 @Suppress("DEPRECATION")

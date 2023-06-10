@@ -13,11 +13,7 @@ class SpfpaFragment : Fragment() {
     private var _binding: FragmentSpfpaBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val spfpaViewModel = ViewModelProvider(this)[SpfpaViewModel::class.java]
 
         _binding = FragmentSpfpaBinding.inflate(inflater, container, false)

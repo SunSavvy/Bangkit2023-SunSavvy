@@ -7,7 +7,7 @@
     android:background="?attr/colorPrimary"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context=".auth.RegisterActivity">
+    tools:context=".auth.ui.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sky"
@@ -126,7 +126,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/title_register" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_email"
+                    android:id="@+id/box_username"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.Custom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -138,6 +138,7 @@
                     app:startIconDrawable="@drawable/ic_person_outline">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints="username"
@@ -150,18 +151,18 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_skin_type"
+                    android:id="@+id/box_skin_type"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu.Custom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_skin_type"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/input_email"
+                    app:layout_constraintTop_toBottomOf="@+id/box_username"
                     app:startIconDrawable="@drawable/ic_feather_outline">
 
                     <AutoCompleteTextView
-                        android:id="@+id/skin_type"
+                        android:id="@+id/input_skin_type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"
@@ -192,7 +193,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/input_skin_type" />
+                    app:layout_constraintTop_toBottomOf="@+id/box_skin_type" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
