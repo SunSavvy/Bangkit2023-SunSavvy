@@ -47,10 +47,12 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnUpdate.setOnClickListener {
+            // TODO("Intent to RegisterActivity but with some extra to edit profile. Also extra that change the button text to "Update Profile")
             val intent = Intent(requireContext(), RegisterActivity::class.java)
             startActivity(intent)
         }
         binding.btnLogOut.setOnClickListener {
+            // TODO("Logout from user data and intent to SplashActivity")
             val intent = Intent(requireContext(), SplashActivity::class.java)
             startActivity(intent)
         }

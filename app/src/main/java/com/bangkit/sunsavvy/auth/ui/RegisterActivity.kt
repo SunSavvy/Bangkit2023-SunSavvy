@@ -6,21 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.bangkit.sunsavvy.MainActivity
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.auth.AuthViewModel
-import com.bangkit.sunsavvy.data.model.UserPreferences
 import com.bangkit.sunsavvy.databinding.ActivityRegisterBinding
 import com.bangkit.sunsavvy.utils.Animator
 import com.bangkit.sunsavvy.utils.OnPressed
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var viewModel: AuthViewModel
 
     private lateinit var selectedSkinType: String
     private lateinit var cloudAnimators: List<Animator>
@@ -32,19 +25,10 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this)[AuthViewModel::class.java]
+        // TODO("Set the registered data into user's profile. When success intent to MainActivity, if fail make a related toast -|- ID username, skin_type")
 
-        viewModel.updatePreferencesSuccess.observe(this, Observer { success ->
-            if (success) {
-                // Handle successful preferences update
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                // Handle preferences update failure
-                Toast.makeText(this, "Failed to update preferences. Please try again.", Toast.LENGTH_SHORT).show()
-            }
-        })
+        // TODO("Skin type for uploaded as a part of user data")
+        val skinType = selectedSkinType
 
         val items = listOf("Skin Type I", "Skin Type II", "Skin Type III", "Skin Type IV")
         val adapter = ArrayAdapter(this, R.layout.item_skintype, items)
@@ -55,12 +39,8 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.btnRegister.setOnClickListener {
-            val skinType = selectedSkinType
-            val preferences = UserPreferences("", "", skinType, "", false)
-            val token = viewModel.registerToken.value
-            if (token != null) {
-                viewModel.updatePreferences(token, preferences)
-            }
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
         OnPressed().setButtonPressedPrimary(binding.btnRegister)

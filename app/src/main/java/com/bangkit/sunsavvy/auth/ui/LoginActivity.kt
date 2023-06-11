@@ -4,20 +4,15 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.bangkit.sunsavvy.MainActivity
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.auth.AuthViewModel
 import com.bangkit.sunsavvy.databinding.ActivityLoginBinding
 import com.bangkit.sunsavvy.utils.OnPressed
 import com.bangkit.sunsavvy.utils.Animator
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var viewModel: AuthViewModel
 
     private lateinit var cloudAnimators: List<Animator>
     private val speedMultipliers = listOf(0.1f, 0.3f, 0.5f)
@@ -28,25 +23,11 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this)[AuthViewModel::class.java]
-
-        viewModel.loginSuccess.observe(this, Observer { success ->
-            if (success) {
-                val token = viewModel.loginToken.value
-                // Handle successful login
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                // Handle login failure
-                Toast.makeText(this, "Login failed. Please try again.", Toast.LENGTH_SHORT).show()
-            }
-        })
+        // TODO("If login success, intent to MainActivity, when fail make a related toast -|- ID: input_email, input_password")
 
         binding.btnLogin.setOnClickListener {
-            val username = binding.inputEmail.text.toString()
-            val password = binding.inputPassword.text.toString()
-            viewModel.login(username, password)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         binding.signUp.setOnClickListener {

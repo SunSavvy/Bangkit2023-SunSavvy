@@ -15,18 +15,6 @@ class AboutusViewModel : ViewModel() {
     private fun fetchData() {
         val itemList = listOf(
             AboutusModel(
-                R.drawable.img_profile_maristy,
-                "Maristy Widya Pangestika",
-                "maristywidya@gmail.com",
-                "Machine Learning",
-                R.drawable.ic_social_instagram,
-                "https://instagram.com/wmaristy",
-                R.drawable.ic_social_github,
-                "https://github.com/maristyw",
-                R.drawable.ic_social_linkedin,
-                "https://www.linkedin.com/in/maristy-widya-p-b964991b3"
-            ),
-            AboutusModel(
                 R.drawable.img_profile_angelina,
                 "Angelina Chandra",
                 "angelchandra27@gmail.com",
@@ -43,14 +31,52 @@ class AboutusViewModel : ViewModel() {
                 "Gagah Aji Gunadi",
                 "aggagah.dev@gmail.com",
                 "Cloud Computing",
+                R.drawable.ic_social_website,
+                "https://aggagah.my.id",
                 R.drawable.ic_social_instagram,
                 "https://instagram.com/ag.gagah",
                 R.drawable.ic_social_github,
                 "https://github.com/aggagah",
                 R.drawable.ic_social_linkedin,
-                "https://linkedin.com/in/gagah-aji-gunadi",
-                R.drawable.ic_social_website,
-                "https://aggagah.my.id"
+                "https://linkedin.com/in/gagah-aji-gunadi"
+            ),
+            AboutusModel(
+                R.drawable.img_profile_maristy,
+                "Maristy Widya Pangestika",
+                "maristywidya@gmail.com",
+                "Machine Learning",
+                R.drawable.ic_social_instagram,
+                "https://instagram.com/wmaristy",
+                R.drawable.ic_social_github,
+                "https://github.com/maristyw",
+                R.drawable.ic_social_linkedin,
+                "https://www.linkedin.com/in/maristy-widya-p-b964991b3"
+            ),
+            AboutusModel(
+                R.drawable.img_profile_suryo,
+                "Suryo Muqsitho",
+                "suryo.muqsitho@gmail.com",
+                "Machine Learning",
+                R.drawable.ic_social_instagram,
+                "https://www.instagram.com/smsitho",
+                R.drawable.ic_social_github,
+                "https://github.com/Smsitho",
+                R.drawable.ic_social_linkedin,
+                "https://www.linkedin.com/in/suryo-muqsitho"
+            ),
+            AboutusModel(
+                R.drawable.img_profile_annisa,
+                "Annisa Rachman",
+                "annisar962@gmail.com",
+                "Mobile Development",
+                R.drawable.ic_social_twitter,
+                "https://twitter.com/bx23tch",
+                R.drawable.ic_social_instagram,
+                "https://www.instagram.com/bx23tch/",
+                R.drawable.ic_social_github,
+                "https://github.com/br0wnx",
+                R.drawable.ic_social_linkedin,
+                "https://www.linkedin.com/in/annisa-rachman"
             ),
             AboutusModel(
                 R.drawable.img_profile_yodhi,

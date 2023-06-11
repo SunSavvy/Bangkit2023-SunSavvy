@@ -23,6 +23,8 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // TODO("Check if user logged in. If true intent to MainActivity, if false intent to LandingActivity")
+
         val packageInfo = packageManager.getPackageInfo(packageName, 0)
         val versionName = packageInfo.versionName
 
@@ -47,7 +49,6 @@ class SplashActivity : AppCompatActivity() {
                 builder.setNegativeButton(getString(R.string.prompt_connection_cancel)) { _, _ -> }
                 builder.show()
             }
-
         }, 2000)
     }
 }

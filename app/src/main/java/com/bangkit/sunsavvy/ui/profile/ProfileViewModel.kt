@@ -14,6 +14,8 @@ class ProfileViewModel : ViewModel() {
     }
 
     private fun fetchData() {
+
+        // TODO("Retrieve data user")
         username.value = "Uzumaki Icha"
         email.value = "kyubi.buntung@rawr.com"
         skinType.value = 2

@@ -102,4 +102,13 @@
         <item name="cardBackgroundColor">?attr/colorPrimaryVariant</item>
     </style>
 
+    <!-- Dialog -->
+    <style name="Dialog.Primary" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">?attr/colorPrimaryVariant</item>
+        <item name="android:textColorPrimary">?attr/colorAccent</item>
+        <item name="android:textColorSecondary">?attr/colorSecondary</item>
+        <item name="android:textColorAlertDialogListItem">?attr/colorOnPrimary</item>
+    </style>
+
+
 </resources>

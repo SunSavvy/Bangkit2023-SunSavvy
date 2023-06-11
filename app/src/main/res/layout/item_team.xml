@@ -106,7 +106,7 @@
                 android:id="@+id/social2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/space_lg"
+                android:layout_marginEnd="@dimen/space_md"
                 android:contentDescription="@string/content_social"
                 app:layout_constraintEnd_toStartOf="@+id/social1"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -115,7 +115,7 @@
                 android:id="@+id/social3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/space_lg"
+                android:layout_marginEnd="@dimen/space_md"
                 android:contentDescription="@string/content_social"
                 app:layout_constraintEnd_toStartOf="@+id/social2"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -124,7 +124,7 @@
                 android:id="@+id/social4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/space_lg"
+                android:layout_marginEnd="@dimen/space_md"
                 android:contentDescription="@string/content_social"
                 app:layout_constraintEnd_toStartOf="@+id/social3"
                 app:layout_constraintTop_toTopOf="parent"/>

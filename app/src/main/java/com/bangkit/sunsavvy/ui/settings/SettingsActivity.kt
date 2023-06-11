@@ -24,6 +24,8 @@ class SettingsActivity : AppCompatActivity() {
             title = getString(R.string.action_settings)
         }
 
+        // TODO("Save the dark mode and alerts")
+
         val settingsViewModel = ViewModelProvider(this)[SettingsViewModel::class.java]
 
         binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->

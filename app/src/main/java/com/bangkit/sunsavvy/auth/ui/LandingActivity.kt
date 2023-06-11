@@ -13,6 +13,7 @@ import com.bangkit.sunsavvy.utils.GetColor.Companion.getPrimaryVariantColor
 
 class LandingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLandingBinding
+
     private lateinit var cloudAnimators: List<Animator>
     private val speedMultipliers = listOf(0.1f, 0.3f, 0.5f)
 
@@ -30,14 +31,8 @@ class LandingActivity : AppCompatActivity() {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
-        binding.btnGoogle.setOnClickListener {
 
-        }
-
-        val buttons = listOf(binding.btnLogin, binding.btnGoogle)
-        for (button in buttons) {
-            OnPressed().setButtonPressedPrimary(button)
-        }
+        OnPressed().setButtonPressedPrimary(binding.btnLogin)
         OnPressed().setButtonPressedSecondary(binding.btnSignUp, getPrimaryVariantColor(this), getAccentColor(this))
 
         animateCloud()

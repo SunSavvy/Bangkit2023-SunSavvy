@@ -163,7 +163,6 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/space_md"
                     android:background="@drawable/shape_circle_fill"
                     android:backgroundTint="?attr/colorPrimaryVariant"
                     android:elevation="@dimen/zero"
@@ -172,61 +171,6 @@
                     android:text="@string/button_sign_up"
                     android:textAllCaps="false"
                     android:textColor="?attr/colorAccent"
-                    android:textSize="@dimen/text_md"
-                    app:layout_constraintBottom_toTopOf="@+id/txt_or"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/txt_or"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/space_sm"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:text="@string/view_or"
-                    android:textAlignment="center"
-                    android:textColor="?attr/colorSecondaryVariant"
-                    android:textSize="@dimen/text_sm"
-                    app:layout_constraintBottom_toTopOf="@+id/btn_google"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <View
-                    android:id="@+id/linea"
-                    android:layout_width="@dimen/size_xl"
-                    android:layout_height="@dimen/hairline"
-                    android:background="?attr/colorSecondaryVariant"
-                    app:layout_constraintBottom_toBottomOf="@+id/txt_or"
-                    app:layout_constraintEnd_toStartOf="@+id/txt_or"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txt_or" />
-
-                <View
-                    android:id="@+id/lineb"
-                    android:layout_width="@dimen/size_xl"
-                    android:layout_height="@dimen/hairline"
-                    android:background="?attr/colorSecondaryVariant"
-                    app:layout_constraintBottom_toBottomOf="@+id/txt_or"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/txt_or"
-                    app:layout_constraintTop_toTopOf="@+id/txt_or" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_google"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_circle_fill"
-                    android:backgroundTint="?attr/colorPrimaryVariant"
-                    android:drawableStart="@drawable/ic_google"
-                    android:elevation="@dimen/elevation_md"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:letterSpacing="0"
-                    android:outlineSpotShadowColor="?attr/colorOnSecondary"
-                    android:paddingHorizontal="@dimen/space_lg"
-                    android:text="@string/button_google"
-                    android:textAllCaps="false"
-                    android:textColor="?attr/colorSecondary"
                     android:textSize="@dimen/text_md"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

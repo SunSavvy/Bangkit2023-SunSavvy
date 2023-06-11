@@ -17,6 +17,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bangkit.sunsavvy.databinding.ActivityMainBinding
+import com.bangkit.sunsavvy.notif.AlarmHelper
 import com.bangkit.sunsavvy.ui.settings.SettingsActivity
 import com.bangkit.sunsavvy.utils.StringConverter
 
@@ -30,7 +31,6 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -56,15 +56,15 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
 
+        // TODO("Retrieve data user")
+        val dataUsername = "Uzumaki Icha"
+        val dataEmail = "kyubi.buntung@rawr.com"
+        val dataSkinType = 4
+
         val headerView = binding.navView.getHeaderView(0)
         val username = headerView.findViewById<TextView>(R.id.username)
         val email = headerView.findViewById<TextView>(R.id.email)
         val skinType = headerView.findViewById<TextView>(R.id.skin_type)
-
-//        TODO("Fetch this data from db")
-        val dataUsername = "Uzumaki Icha"
-        val dataEmail = "kyubi.buntung@rawr.com"
-        val dataSkinType = 4
 
         username.text = dataUsername
         email.text = dataEmail
@@ -78,6 +78,9 @@ class MainActivity : AppCompatActivity() {
                 swipeRefreshLayout.isRefreshing = false
             }, 500)
         }
+
+        val alarmHelper = AlarmHelper(this)
+        alarmHelper.setAlarms()
     }
 
     override fun onSupportNavigateUp(): Boolean {
