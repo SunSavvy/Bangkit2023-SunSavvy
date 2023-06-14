@@ -168,7 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_lg"
-                    android:layout_marginBottom="@dimen/space_md"
+                    android:layout_marginBottom="@dimen/space_lg"
                     android:background="@drawable/shape_circle_fill"
                     android:backgroundTint="?attr/colorAccent"
                     android:elevation="@dimen/elevation_md"

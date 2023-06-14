@@ -26,15 +26,8 @@ class SignupActivity : AppCompatActivity() {
         // TODO("User create account. If success intent to RegisterActivity, if fail make a related toast -|- ID: input_email, input_password, input_password_retype")
 
         binding.btnSignUp.setOnClickListener {
-            val username = binding.inputEmail.text.toString()
-            val password = binding.inputPassword.text.toString()
-            val retypePassword = binding.inputPasswordRetype.text.toString()
-
-            if (password == retypePassword) {
-                // TODO("Upload email and password so the account will created with those credentials")
-            } else {
-                Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show()
-            }
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
         binding.login.setOnClickListener {

@@ -13,9 +13,11 @@ import com.bangkit.sunsavvy.databinding.FragmentUvBinding
 class UvFragment : Fragment() {
     private var _binding: FragmentUvBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var itemViewModel: UvViewModel
     private lateinit var recyclerView: RecyclerView
-    private lateinit var itemAdapter: UvAdapter
+    private lateinit var informationAdapter: UvAdapterInformation
+    private lateinit var categoryAdapter: UvAdapterCategory
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentUvBinding.inflate(inflater, container, false)
@@ -23,7 +25,10 @@ class UvFragment : Fragment() {
 
         itemViewModel = ViewModelProvider(this)[UvViewModel::class.java]
         itemViewModel.information.observe(viewLifecycleOwner) { information ->
-            itemAdapter.setItems(information)
+            informationAdapter.setItems(information)
+        }
+        itemViewModel.category.observe(viewLifecycleOwner) { category ->
+            categoryAdapter.setItems(category)
         }
 
         return root
@@ -32,11 +37,18 @@ class UvFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        itemAdapter = UvAdapter(emptyList())
-        recyclerView = binding.rvUv
+        informationAdapter = UvAdapterInformation(emptyList())
+        recyclerView = binding.rvUvInformation
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = itemAdapter
+            adapter = informationAdapter
+        }
+
+        categoryAdapter = UvAdapterCategory(emptyList())
+        recyclerView = binding.rvUvCategory
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = categoryAdapter
         }
 
     }

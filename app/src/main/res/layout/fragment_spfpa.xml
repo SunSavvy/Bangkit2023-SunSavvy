@@ -15,48 +15,34 @@
         android:clipChildren="false"
         android:padding="@dimen/space_lg">
 
-        <TextView
-            android:id="@+id/head1"
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_spf_pa_information"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_semi_bold"
-            android:text="@string/placeholder_subtitle"
-            android:textAlignment="textStart"
-            android:textAllCaps="false"
-            android:textColor="?attr/colorOnPrimary"
-            android:textSize="@dimen/text_md"
+            android:layout_centerInParent="true"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_regular"
-            android:text="@string/placeholder_lorem_ipsum"
-            android:textAlignment="textStart"
-            android:textAllCaps="false"
-            android:textColor="?attr/colorSecondary"
-            android:textSize="@dimen/text_sm"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/head1" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ObsoleteLayoutParam"
+            tools:listitem="@layout/item_information" />
 
         <TextView
             android:id="@+id/head2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_xl"
             android:fontFamily="@font/montserrat_semi_bold"
-            android:text="@string/placeholder_subtitle"
+            android:text="@string/view_spf_level_category"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="?attr/colorOnPrimary"
             android:textSize="@dimen/text_md"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/body" />
+            app:layout_constraintTop_toBottomOf="@+id/rv_spf_pa_information" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_spf_pa"
+            android:id="@+id/rv_spf_pa_level"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

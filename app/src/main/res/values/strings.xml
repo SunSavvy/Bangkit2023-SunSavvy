@@ -9,6 +9,7 @@
     <string name="title_activity_register">Register Activity</string>
     <string name="title_activity_splash">Splash Activity</string>
     <string name="title_activity_settings">Settings Activity</string>
+    <string name="title_activity_skin_type">Skintype Activity</string>
 
     <string name="action_settings">Settings</string>
     <string name="menu_menu">Menu</string>
@@ -29,6 +30,9 @@
     <string name="content_picture">picture</string>
     <string name="content_slogan">slogan</string>
     <string name="content_social">social</string>
+    <string name="content_indicator">indicator</string>
+    <string name="content_skintype">skintype</string>
+    <string name="content_trivia">trivia</string>
 
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
@@ -61,6 +65,29 @@
     <string name="view_cohort_cc">Bangkit 2023\nCloud Computing</string>
     <string name="view_cohort_ml">Bangkit 2023\nMachine Learning</string>
     <string name="view_sunburn_time">Time to Sunburn</string>
+    <string name="view_slogan_slip">slip</string>
+    <string name="view_slogan_slop">slop</string>
+    <string name="view_slogan_slap">slap</string>
+    <string name="view_slogan_seek">seek</string>
+    <string name="view_slogan_slide">slide</string>
+    <string name="view_spf_level_category">SPF Level Category</string>
+    <string name="view_sunsmart">SunSmart</string>
+    <string name="view_about_us_description">We are a team focused on developing apps that aim to remind users about using sunscreen. We care about skin health and recognize the importance of protecting ourselves from harmful sun exposure</string>
+    <string name="view_protection_weapon">Protection Weapon</string>
+    <string name="view_uv_index_category">UV Index Category</string>
+    <string name="view_cancer_council_victoria">Cancer Council Victoria</string>
+    <string name="view_cancer_council_s_sunsmart_program">Cancer Council\'s SunSmart program</string>
+    <string name="view_sid_the_seagull">Sid the Seagull</string>
+    <string name="view_our_background">Our Background</string>
+    <string name="view_our_team">Our Team</string>
+    <string name="view_learn_more_about_skin_type">Learn more about skin type</string>
+    <string name="view_sunsmart_content">
+        \t\tEstablished by Cancer Council Victoria in 1981, the Slip, Slop, Slap slogan became the core campaign for the Cancer Council’s SunSmart program in educating both young and old Australians on the importance of sun protection.
+        \n\n
+        \t\tThe campaign featured Sid the Seagull slipping on a shirt, slopping on some sunscreen, and slapping on a hat in a catchy jingle and tune. This campaign showed great success in the decades to come as it shifted Australian attitudes and behaviours when it came to sun protection.
+        \n\n
+        \t\tIn 2007, the slogan was upgraded and relaunched to Slip, Slop, Slap, Seek, and Slide – adding two more goals to the sun protection regime – seek out shade, and slide on some wrap-around sunglasses!
+    </string>
 
     <string name="button_login">Login</string>
     <string name="button_sign_up">Sign-Up</string>
@@ -80,21 +107,29 @@
 
     <string name="placeholder_blank" tools:ignore="TypographyEllipsis">...</string>
     <string name="placeholder_app_version">Version Alpha 1.0</string>
+    <string name="placeholder_subtitle">This is Title</string>
+    <string name="placeholder_head">Head</string>
+    <string name="placeholder_body">Body</string>
     <string name="placeholder_username">Uchiha Icha</string>
     <string name="placeholder_email">cumihitam@pak.kris</string>
     <string name="placeholder_clock">00:00</string>
     <string name="placeholder_meridiem">pm</string>
     <string name="placeholder_location">Bandung</string>
-    <string name="placeholder_uv_index_level">6.0</string>
-    <string name="placeholder_uv_category">Medium UV Index</string>
     <string name="placeholder_sunburn_time">25 Minutes</string>
     <string name="placeholder_pa">PA++</string>
-    <string name="placeholder_spf">SPF 50</string>
+    <string name="placeholder_spf">SPF 50+</string>
     <string name="placeholder_spf_number">50</string>
     <string name="placeholder_uv">60%</string>
-    <string name="placeholder_head">Head</string>
-    <string name="placeholder_body">Body</string>
+    <string name="placeholder_uv_category">Medium UV Index</string>
+    <string name="placeholder_uv_category_alt">Extreme</string>
+    <string name="placeholder_uv_index_level">6.0</string>
+    <string name="placeholder_uv_index_level_alt">11+</string>
+    <string name="placeholder_uv_protection_level">Maximum Protection</string>
+    <string name="placeholder_slogan">Slip</string>
+    <string name="placeholder_slogan_description">Wear protective clothing.</string>
     <string name="placeholder_skin_type">IV</string>
-    <string name="placeholder_subtitle">This is Title</string>
+    <string name="placeholder_skin_type_full">Skin Type II</string>
+    <string name="placeholder_skin_type_characteristic">Light skin\nLight/golden brown hair\nBrown/green eyes</string>
+    <string name="placeholder_skin_type_explanation">usually burns first before slowly darkening the color</string>
     <string name="placeholder_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus dui nec risus. Maecenas non sodales nisi, vel dictum dolor.</string>
 </resources>

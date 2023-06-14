@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="uv_extreme">#FFC4B5FD</color>
+    <color name="uv_very_high">#FFFCA5A5</color>
+    <color name="uv_high">#FFFDBA74</color>
+    <color name="uv_medium">#FFFDE047</color>
+    <color name="uv_low">#FFBEF264</color>
+</resources>

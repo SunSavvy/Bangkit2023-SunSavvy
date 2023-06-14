@@ -13,19 +13,140 @@
         android:clipChildren="false"
         android:padding="@dimen/space_lg">
 
-        <TextView
-            android:id="@+id/text"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="@dimen/size_3xl"
+            android:clipChildren="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:autoPlay="true"
+                app:enableAutomaticInitialization="true"
+                app:videoId="WOv5HGOJYTA" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/sunsmart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:text="@string/view_sunsmart"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="@dimen/text_md"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <TextView
+            android:id="@+id/body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/view_sunsmart_content"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorSecondary"
+            android:textSize="@dimen/text_sm"
+            app:layout_constraintStart_toStartOf="@+id/sunsmart"
+            app:layout_constraintTop_toBottomOf="@+id/sunsmart" />
+
+        <TextView
+            android:id="@+id/cancer_council_victoria"
+            android:layout_width="wrap_content"
+            android:drawablePadding="@dimen/space_xs"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:background="@drawable/shape_circle_fill"
+            android:backgroundTint="?attr/colorAccent"
+            android:fontFamily="@font/montserrat_medium"
+            android:paddingHorizontal="@dimen/space_md"
+            android:paddingVertical="@dimen/space_xs"
+            android:text="@string/view_cancer_council_victoria"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="@dimen/text_sm"
+            app:layout_constraintStart_toStartOf="@+id/sunsmart"
+            app:layout_constraintTop_toBottomOf="@+id/body"
+            app:drawableStartCompat="@drawable/ic_link" />
+
+        <TextView
+            android:id="@+id/cancer_council_s_sunsmart_program"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_sm"
+            android:background="@drawable/shape_circle_fill"
+            android:backgroundTint="?attr/colorAccent"
+            android:drawablePadding="@dimen/space_xs"
+            android:fontFamily="@font/montserrat_medium"
+            android:paddingHorizontal="@dimen/space_md"
+            android:paddingVertical="@dimen/space_xs"
+            android:text="@string/view_cancer_council_s_sunsmart_program"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="@dimen/text_sm"
+            app:drawableStartCompat="@drawable/ic_link"
+            app:layout_constraintStart_toStartOf="@+id/sunsmart"
+            app:layout_constraintTop_toBottomOf="@+id/cancer_council_victoria" />
+
+        <TextView
+            android:id="@+id/sid_the_seagull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_sm"
+            android:background="@drawable/shape_circle_fill"
+            android:backgroundTint="?attr/colorAccent"
+            android:drawablePadding="@dimen/space_xs"
+            android:fontFamily="@font/montserrat_medium"
+            android:paddingHorizontal="@dimen/space_md"
+            android:paddingVertical="@dimen/space_xs"
+            android:text="@string/view_sid_the_seagull"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="@dimen/text_sm"
+            app:drawableStartCompat="@drawable/ic_link"
+            app:layout_constraintStart_toStartOf="@+id/sunsmart"
+            app:layout_constraintTop_toBottomOf="@+id/cancer_council_s_sunsmart_program" />
+
+        <TextView
+            android:id="@+id/head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:text="@string/view_protection_weapon"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="@dimen/text_md"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sid_the_seagull" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_sun_protection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/space_md"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/head"
+            tools:ignore="ObsoleteLayoutParam"
+            tools:listitem="@layout/item_sunprotection" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,15 +1,110 @@
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fontFamily="@font/montserrat_medium"
-    android:text="@string/placeholder_skin_type"
-    android:paddingVertical="@dimen/space_md"
-    android:paddingStart="@dimen/space_lg"
-    android:textAlignment="textStart"
-    android:textAllCaps="false"
-    android:ellipsize="end"
-    android:maxLines="1"
-    android:textColor="?attr/colorOnPrimary"
-    android:textSize="@dimen/text_md"
-    tools:ignore="RtlSymmetry" />
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/space_lg">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_skintype"
+        style="@style/Card.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:outlineSpotShadowColor="?attr/colorOnSecondary"
+        app:cardCornerRadius="@dimen/radius_squircle_md"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnusedAttribute">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/space_lg">
+
+            <TextView
+                android:id="@+id/skin_type_full"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_5xl"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/placeholder_skin_type_full"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="?attr/colorOnPrimary"
+                android:textSize="@dimen/text_lg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/skin_type_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/placeholder_skin_type_characteristic"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="?attr/colorSecondaryVariant"
+                android:textSize="@dimen/text_sm"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/skin_type_full"
+                app:layout_constraintTop_toBottomOf="@id/skin_type_full" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/img_skin_type"
+        android:layout_width="@dimen/size_2xl"
+        android:layout_height="@dimen/size_2xl"
+        android:layout_marginStart="@dimen/space_md"
+        android:contentDescription="@string/content_skintype"
+        android:elevation="@dimen/elevation_xl"
+        android:src="@drawable/img_person_type_2"
+        app:layout_constraintBottom_toBottomOf="@+id/card_skintype"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/space_lg"
+        android:layout_marginTop="@dimen/space_md"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_skintype">
+
+        <TextView
+            android:id="@+id/skin_type_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:text="@string/placeholder_skin_type"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorSecondary"
+            android:textSize="@dimen/text_md" />
+
+        <TextView
+            android:id="@+id/skin_type_explanation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_lg"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/placeholder_skin_type_explanation"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorSecondaryVariant"
+            android:textSize="@dimen/text_sm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_skintype" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

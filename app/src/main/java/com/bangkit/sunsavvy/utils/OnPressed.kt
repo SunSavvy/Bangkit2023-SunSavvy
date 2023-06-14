@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
+import org.w3c.dom.Text
 
 class OnPressed {
 
@@ -74,6 +75,31 @@ class OnPressed {
                 }
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     setTextViewFont(text, from)
+                }
+            }
+            false
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    fun setTextPressedSecondary(textView: TextView?, from: Int, to: Int) {
+        val textColorAnimator = ObjectAnimator.ofObject(textView, "textColor", ArgbEvaluator(), from, to).apply {
+            this.duration = ANIMATION_DURATION.toLong()
+        }
+
+        val backgroundAnimator = ObjectAnimator.ofObject(textView?.background, "tint", ArgbEvaluator(), to, from).apply {
+            this.duration = ANIMATION_DURATION.toLong()
+        }
+
+        textView?.setOnTouchListener { _, motionEvent ->
+            when (motionEvent.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    textColorAnimator.reverse()
+                    backgroundAnimator.reverse()
+                }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    textColorAnimator.start()
+                    backgroundAnimator.start()
                 }
             }
             false

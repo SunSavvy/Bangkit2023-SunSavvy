@@ -21,6 +21,7 @@
         android:theme="@style/Theme.SunSavvy"
         tools:targetApi="31">
         <receiver android:name=".notif.AlarmReceiver" />
+
         <activity
             android:name=".ui.settings.SettingsActivity"
             android:exported="false"
@@ -65,6 +66,11 @@
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.SunSavvy.FullScreen"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.skintype.SkintypeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_skin_type"
+            android:theme="@style/Theme.SunSavvy.NoActionBar" />
     </application>
 
 </manifest>

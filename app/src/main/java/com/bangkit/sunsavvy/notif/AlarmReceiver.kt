@@ -14,7 +14,6 @@ import com.bangkit.sunsavvy.R
 
 class AlarmReceiver : BroadcastReceiver() {
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == "ALARM_ACTION") {
             val uvIndex = intent.getStringExtra("UV_INDEX")
@@ -28,7 +27,6 @@ class AlarmReceiver : BroadcastReceiver() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel(context: Context, channelId: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(

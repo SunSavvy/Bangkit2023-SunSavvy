@@ -223,11 +223,71 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_sunburn_time" />
 
+            <ImageView
+                android:id="@+id/quotes_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_md"
+                android:layout_marginTop="@dimen/space_md"
+                android:contentDescription="@string/content_trivia"
+                android:elevation="@dimen/elevation_xl"
+                android:src="@drawable/ic_quote"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/card_trivia" />
+
+            <ImageView
+                android:id="@+id/quotes_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_md"
+                android:layout_marginBottom="@dimen/space_md"
+                android:contentDescription="@string/content_trivia"
+                android:elevation="@dimen/elevation_xl"
+                android:rotation="180"
+                android:src="@drawable/ic_quote"
+                app:layout_constraintBottom_toBottomOf="@+id/card_trivia"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_trivia"
+                style="@style/Card.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xl"
+                android:outlineSpotShadowColor="?attr/colorOnSecondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sunburn_time"
+                tools:ignore="UnusedAttribute">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_lg"
+                    android:layout_marginVertical="@dimen/space_lg"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/trivia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_squircle_fill"
+                        android:backgroundTint="@color/transparent"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="@string/placeholder_lorem_ipsum"
+                        android:textAlignment="textStart"
+                        android:textColor="?attr/colorSecondary" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
             <TextView
                 android:id="@+id/txt_protection_level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_2xl"
+                android:layout_marginTop="@dimen/space_xl"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="@string/view_protection_level"
                 android:textAlignment="textStart"
@@ -235,7 +295,7 @@
                 android:textColor="?attr/colorSecondaryVariant"
                 android:textSize="@dimen/text_sm"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sunburn_time" />
+                app:layout_constraintTop_toBottomOf="@+id/card_trivia" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_protection_level"
@@ -253,20 +313,6 @@
                     android:id="@+id/wrapper_protection_level"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/pa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/space_lg"
-                        android:layout_marginTop="@dimen/space_md"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:text="@string/placeholder_pa"
-                        android:textAlignment="textStart"
-                        android:textColor="?attr/colorSecondary"
-                        android:textSize="@dimen/text_sm"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/spf"
@@ -289,9 +335,9 @@
 
             <ImageView
                 android:id="@+id/sunscreen"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginEnd="-64dp"
+                android:layout_width="@dimen/size_3xl"
+                android:layout_height="@dimen/size_3xl"
+                android:layout_marginEnd="@dimen/space_xl_min"
                 android:contentDescription="@string/content_sunscreen"
                 android:elevation="@dimen/elevation_xl"
                 android:src="@drawable/img_sunscreen"
@@ -319,7 +365,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_sm"
+                android:layout_marginBottom="@dimen/space_lg"
                 android:outlineSpotShadowColor="?attr/colorOnSecondary"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_protect_yourself"
@@ -328,36 +376,92 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_lg"
                     android:layout_marginVertical="@dimen/space_md"
-                    android:gravity="center_vertical"
+                    android:gravity="center_horizontal|center_vertical"
                     android:orientation="horizontal">
 
-                    <View
-                        android:layout_width="@dimen/zero"
-                        android:layout_height="@dimen/zero"
-                        android:layout_weight="1" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_slogan"
+                    <TextView
+                        android:id="@+id/slogan_slip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        android:paddingStart="@dimen/space_lg"
-                        android:paddingEnd="@dimen/space_md"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ObsoleteLayoutParam"
-                        tools:listitem="@layout/item_slogan" />
+                        android:background="@drawable/shape_squircle_fill"
+                        android:backgroundTint="@color/transparent"
+                        android:drawablePadding="@dimen/space_xs"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:paddingHorizontal="@dimen/space_md"
+                        android:paddingVertical="@dimen/space_sm"
+                        android:text="@string/view_slogan_slip"
+                        android:textAlignment="center"
+                        android:textColor="?attr/colorSecondary"
+                        android:textSize="@dimen/text_xs"
+                        app:drawableTopCompat="@drawable/ic_outfit" />
 
-                    <View
-                        android:layout_width="@dimen/zero"
-                        android:layout_height="@dimen/zero"
-                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/slogan_slop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/space_md"
+                        android:background="@drawable/shape_squircle_fill"
+                        android:backgroundTint="@color/transparent"
+                        android:drawablePadding="@dimen/space_xs"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:paddingHorizontal="@dimen/space_md"
+                        android:paddingVertical="@dimen/space_sm"
+                        android:text="@string/view_slogan_slop"
+                        android:textAlignment="center"
+                        android:textColor="?attr/colorSecondary"
+                        android:textSize="@dimen/text_xs"
+                        app:drawableTopCompat="@drawable/ic_sunscreen" />
+
+                    <TextView
+                        android:id="@+id/slogan_slap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_squircle_fill"
+                        android:backgroundTint="@color/transparent"
+                        android:drawablePadding="@dimen/space_xs"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:paddingHorizontal="@dimen/space_md"
+                        android:paddingVertical="@dimen/space_sm"
+                        android:text="@string/view_slogan_slap"
+                        android:textAlignment="center"
+                        android:textColor="?attr/colorSecondary"
+                        android:textSize="@dimen/text_xs"
+                        app:drawableTopCompat="@drawable/ic_hat" />
+
+                    <TextView
+                        android:id="@+id/slogan_seek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/space_md"
+                        android:background="@drawable/shape_squircle_fill"
+                        android:backgroundTint="@color/transparent"
+                        android:drawablePadding="@dimen/space_xs"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:paddingHorizontal="@dimen/space_md"
+                        android:paddingVertical="@dimen/space_sm"
+                        android:text="@string/view_slogan_seek"
+                        android:textAlignment="center"
+                        android:textColor="?attr/colorSecondary"
+                        android:textSize="@dimen/text_xs"
+                        app:drawableTopCompat="@drawable/ic_umbrella" />
+
+                    <TextView
+                        android:id="@+id/slogan_slide"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_squircle_fill"
+                        android:backgroundTint="@color/transparent"
+                        android:drawablePadding="@dimen/space_xs"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:paddingHorizontal="@dimen/space_md"
+                        android:paddingVertical="@dimen/space_sm"
+                        android:text="@string/view_slogan_slide"
+                        android:textAlignment="center"
+                        android:textColor="?attr/colorSecondary"
+                        android:textSize="@dimen/text_xs"
+                        app:drawableTopCompat="@drawable/ic_sunglasses" />
 
                 </LinearLayout>
 

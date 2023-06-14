@@ -3,10 +3,10 @@ package com.bangkit.sunsavvy.ui.aboutus
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.data.model.AboutusModel
+import com.bangkit.sunsavvy.data.model.TeamModel
 
 class AboutusViewModel : ViewModel() {
-    val items: MutableLiveData<List<AboutusModel>> = MutableLiveData()
+    val items: MutableLiveData<List<TeamModel>> = MutableLiveData()
 
     init {
         fetchData()
@@ -14,7 +14,7 @@ class AboutusViewModel : ViewModel() {
 
     private fun fetchData() {
         val itemList = listOf(
-            AboutusModel(
+            TeamModel(
                 R.drawable.img_profile_angelina,
                 "Angelina Chandra",
                 "angelchandra27@gmail.com",
@@ -26,7 +26,7 @@ class AboutusViewModel : ViewModel() {
                 R.drawable.ic_social_linkedin,
                 "https://www.linkedin.com/in/angelinachandra/"
             ),
-            AboutusModel(
+            TeamModel(
                 R.drawable.img_profile_gagah,
                 "Gagah Aji Gunadi",
                 "aggagah.dev@gmail.com",
@@ -40,7 +40,7 @@ class AboutusViewModel : ViewModel() {
                 R.drawable.ic_social_linkedin,
                 "https://linkedin.com/in/gagah-aji-gunadi"
             ),
-            AboutusModel(
+            TeamModel(
                 R.drawable.img_profile_maristy,
                 "Maristy Widya Pangestika",
                 "maristywidya@gmail.com",
@@ -52,7 +52,7 @@ class AboutusViewModel : ViewModel() {
                 R.drawable.ic_social_linkedin,
                 "https://www.linkedin.com/in/maristy-widya-p-b964991b3"
             ),
-            AboutusModel(
+            TeamModel(
                 R.drawable.img_profile_suryo,
                 "Suryo Muqsitho",
                 "suryo.muqsitho@gmail.com",
@@ -64,7 +64,7 @@ class AboutusViewModel : ViewModel() {
                 R.drawable.ic_social_linkedin,
                 "https://www.linkedin.com/in/suryo-muqsitho"
             ),
-            AboutusModel(
+            TeamModel(
                 R.drawable.img_profile_annisa,
                 "Annisa Rachman",
                 "annisar962@gmail.com",
@@ -78,7 +78,7 @@ class AboutusViewModel : ViewModel() {
                 R.drawable.ic_social_linkedin,
                 "https://www.linkedin.com/in/annisa-rachman"
             ),
-            AboutusModel(
+            TeamModel(
                 R.drawable.img_profile_yodhi,
                 "Yodhi Anugrah Damar Saputra",
                 "yodhianugrah23@gmail.com",

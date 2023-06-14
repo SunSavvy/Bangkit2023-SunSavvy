@@ -15,5 +15,16 @@
     <color name="lavender_400">#FF7A90C7</color>
     <color name="lavender_300">#FFA5BAEE</color>
 
-    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#FF71717A</color>
+    <color name="uv_extreme">#FFA78BFA</color>
+    <color name="uv_very_high">#FFF87171</color>
+    <color name="uv_high">#FFFB923C</color>
+    <color name="uv_medium">#FFFACC15</color>
+    <color name="uv_low">#FFA3E635</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/zinc_500
+    </color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
 </resources>

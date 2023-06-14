@@ -1,6 +1,6 @@
 package com.bangkit.sunsavvy.data.model
 
-data class AboutusModel(
+data class TeamModel(
     val picture: Int = 0,
     val name: String? = null,
     val email: String? = null,

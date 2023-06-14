@@ -4,24 +4,33 @@ import android.Manifest
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
 import android.location.Address
 import android.location.Geocoder
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.sunsavvy.R
 import com.bangkit.sunsavvy.databinding.FragmentHomeBinding
 import com.bangkit.sunsavvy.utils.Animator
+import com.bangkit.sunsavvy.utils.GetColor
+import com.bangkit.sunsavvy.utils.OnPressed
 import com.bangkit.sunsavvy.utils.StringConverter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -39,7 +48,6 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: HomeAdapter
     private lateinit var viewModel: HomeViewModel
 
     private val timeFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
@@ -50,6 +58,7 @@ class HomeFragment : Fragment() {
     private val speedMultipliers = listOf(0.1f, 0.3f, 0.5f)
     var fusedLocationProviderClient: FusedLocationProviderClient? = null
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -66,7 +75,39 @@ class HomeFragment : Fragment() {
             binding.uvIndexLevelAlt.text = uvIndex.toString()
         }
         viewModel.uvCategory.observe(viewLifecycleOwner) { uvCategory ->
-            binding.uvCategory.text = uvCategory
+            binding.uvCategory.text = "$uvCategory UV Index"
+
+            when (uvCategory) {
+                "Extreme" -> {
+                    binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_extreme))
+                    val slogans = listOf(binding.sloganSlip, binding.sloganSlop, binding.sloganSlap, binding.sloganSeek, binding.sloganSlide)
+                    for (slogan in slogans) {
+                        onSlogan(slogan)
+                    }
+                }
+                "Very High" -> {
+                    binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_very_high))
+                    val slogans = listOf(binding.sloganSlip, binding.sloganSlop, binding.sloganSlap, binding.sloganSlide)
+                    for (slogan in slogans) {
+                        onSlogan(slogan)
+                    }
+                }
+                "High" -> {
+                    binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_high))
+                    val slogans = listOf(binding.sloganSlop, binding.sloganSlap, binding.sloganSlide)
+                    for (slogan in slogans) {
+                        onSlogan(slogan)
+                    }
+                }
+                "Medium" -> {
+                    binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_medium))
+                    val slogans = listOf(binding.sloganSlop, binding.sloganSlide)
+                    for (slogan in slogans) {
+                        onSlogan(slogan)
+                    }
+                }
+                "Low" -> binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_low))
+            }
         }
         viewModel.sunburnTime.observe(viewLifecycleOwner) { sunburnTime ->
             binding.sunburnTime.text = sunburnTime.toString()
@@ -75,26 +116,16 @@ class HomeFragment : Fragment() {
             val romanNumeral = StringConverter.arabicToRoman(skinType)
             binding.skinType.text = romanNumeral
         }
-        viewModel.pa.observe(viewLifecycleOwner) { pa ->
-            val paPlus = "+".repeat(pa)
-            binding.pa.text = "PA $paPlus"
-        }
         viewModel.spf.observe(viewLifecycleOwner) { spf ->
             binding.spf.text = "SPF $spf"
         }
-        viewModel.slogan.observe(viewLifecycleOwner) { items ->
-            adapter.setItems(items)
-        }
+        binding.trivia.text = viewModel.trivia.random()
 
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        adapter = HomeAdapter()
-        binding.rvSlogan.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvSlogan.adapter = adapter
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         getLastLocation()
@@ -118,6 +149,18 @@ class HomeFragment : Fragment() {
         _binding = null
 
         cloudAnimators.forEach { it.stopAnimation() }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        if (requestCode == REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLastLocation()
+            } else {
+                Toast.makeText(requireContext(), "Required Permission", Toast.LENGTH_SHORT).show()
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     private fun animateCloud() {
@@ -167,7 +210,7 @@ class HomeFragment : Fragment() {
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             fusedLocationProviderClient!!.lastLocation.addOnSuccessListener { location ->
                 if (location != null) {
-                    val geocoder = Geocoder(requireActivity(), Locale.getDefault())
+                    val geocoder = Geocoder(requireActivity(), Locale("ID"))
                     val addresses: List<Address>?
                     try {
                         addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
@@ -187,15 +230,11 @@ class HomeFragment : Fragment() {
         ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        if (requestCode == REQUEST_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getLastLocation()
-            } else {
-                Toast.makeText(requireContext(), "Required Permission", Toast.LENGTH_SHORT).show()
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    @SuppressLint("UseCompatTextViewDrawableApis")
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun onSlogan(slogan: TextView) {
+        slogan.setTextColor(ColorStateList.valueOf(GetColor.getPrimaryColor(requireContext())))
+        slogan.backgroundTintList = ColorStateList.valueOf(GetColor.getAccentColor(requireContext()))
+        slogan.compoundDrawableTintList = ColorStateList.valueOf(GetColor.getPrimaryColor(requireContext()))
     }
 }

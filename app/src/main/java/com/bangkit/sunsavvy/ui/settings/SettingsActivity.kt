@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.sunsavvy.R
 import com.bangkit.sunsavvy.databinding.ActivitySettingsBinding
 
+@Suppress("DEPRECATION")
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
     private val settingsViewModel: SettingsViewModel by viewModels()

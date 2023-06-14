@@ -10,11 +10,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.data.model.AboutusModel
+import com.bangkit.sunsavvy.data.model.TeamModel
 
-class AboutusAdapter(private var items: List<AboutusModel>) : RecyclerView.Adapter<AboutusAdapter.ItemViewHolder>() {
+class AboutusAdapter(private var items: List<TeamModel>) : RecyclerView.Adapter<AboutusAdapter.ItemViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")
-    fun setItems(items: List<AboutusModel>) {
+    fun setItems(items: List<TeamModel>) {
         this.items = items
         notifyDataSetChanged()
     }
@@ -44,10 +44,10 @@ class AboutusAdapter(private var items: List<AboutusModel>) : RecyclerView.Adapt
         private val socialFourIcon: ImageView = itemView.findViewById(R.id.social4)
 
         @SuppressLint("SetTextI18n")
-        fun bind(item: AboutusModel) {
+        fun bind(item: TeamModel) {
             picture.setImageResource(item.picture)
-            name.text = item.name
-            email.text = item.email
+            name.text = item.name.toString()
+            email.text = item.email.toString()
             cohort.text = "Bangkit 2023\n ${item.cohort}"
 
             socialOneIcon.setImageResource(item.socialOneIcon)

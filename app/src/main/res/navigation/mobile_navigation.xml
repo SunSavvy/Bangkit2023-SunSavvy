@@ -43,9 +43,9 @@
 
     <fragment
         android:id="@+id/nav_campaign"
-        android:name="com.bangkit.sunsavvy.ui.campaign.CampaignFragment"
+        android:name="com.bangkit.sunsavvy.ui.sunscreen.SunscreenFragment"
         android:label="@string/menu_campaign"
-        tools:layout="@layout/fragment_campaign" />
+        tools:layout="@layout/fragment_sunscreen" />
 
     <fragment
         android:id="@+id/nav_about_us"

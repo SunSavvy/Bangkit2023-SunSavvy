@@ -2,6 +2,8 @@
     <dimen name="zero">0dp</dimen>
     <dimen name="hairline">0.5dp</dimen>
 
+    <dimen name="space_5xl">124dp</dimen>
+    <dimen name="space_4xl">72dp</dimen>
     <dimen name="space_3xl">64dp</dimen>
     <dimen name="space_2xl">48dp</dimen>
     <dimen name="space_xl">36dp</dimen>
@@ -17,7 +19,9 @@
     <dimen name="space_lg_min">-24dp</dimen>
     <dimen name="space_xl_min">-56dp</dimen>
 
-    <dimen name="size_xl">112dp</dimen>
+    <dimen name="size_3xl">196dp</dimen>
+    <dimen name="size_2xl">124dp</dimen>
+    <dimen name="size_xl">96dp</dimen>
     <dimen name="size_lg">64dp</dimen>
     <dimen name="size_md">24dp</dimen>
     <dimen name="size_sm">16dp</dimen>
@@ -27,6 +31,7 @@
     <dimen name="text_lg">24sp</dimen>
     <dimen name="text_md">16sp</dimen>
     <dimen name="text_sm">12sp</dimen>
+    <dimen name="text_xs">10sp</dimen>
 
     <dimen name="elevation_xl">36dp</dimen>
     <dimen name="elevation_lg">24dp</dimen>
@@ -36,4 +41,10 @@
     <dimen name="radius_squircle_md">24dp</dimen>
     <dimen name="radius_squircle_sm">12dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">0dp</dimen>
 </resources>
