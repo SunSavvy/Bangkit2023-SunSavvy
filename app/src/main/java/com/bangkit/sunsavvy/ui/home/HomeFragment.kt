@@ -11,7 +11,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,15 +21,14 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.sunsavvy.R
 import com.bangkit.sunsavvy.databinding.FragmentHomeBinding
+import com.bangkit.sunsavvy.ui.spfpa.SpfpaFragment
+import com.bangkit.sunsavvy.ui.sunprotection.SunprotectionFragment
 import com.bangkit.sunsavvy.utils.Animator
 import com.bangkit.sunsavvy.utils.GetColor
-import com.bangkit.sunsavvy.utils.OnPressed
 import com.bangkit.sunsavvy.utils.StringConverter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -118,6 +116,10 @@ class HomeFragment : Fragment() {
         }
         viewModel.spf.observe(viewLifecycleOwner) { spf ->
             binding.spf.text = "SPF $spf"
+        }
+        binding.trivia.text = viewModel.trivia.random()
+        binding.cardTrivia.setOnClickListener {
+            binding.trivia.text = viewModel.trivia.random()
         }
         binding.trivia.text = viewModel.trivia.random()
 

@@ -48,9 +48,9 @@
                     android:title="@string/menu_skin_type" />
 
                 <item
-                    android:id="@+id/nav_campaign"
-                    android:icon="@drawable/ic_megaphone"
-                    android:title="@string/menu_campaign" />
+                    android:id="@+id/nav_sunscreen"
+                    android:icon="@drawable/ic_sunscreen"
+                    android:title="@string/menu_sunscreen" />
             </menu>
 
         </item>

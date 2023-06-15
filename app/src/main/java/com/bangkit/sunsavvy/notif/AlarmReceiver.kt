@@ -7,7 +7,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.bangkit.sunsavvy.R
@@ -15,46 +14,31 @@ import com.bangkit.sunsavvy.R
 class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action == "ALARM_ACTION") {
-            val uvIndex = intent.getStringExtra("UV_INDEX")
-            val message = "Today's UV Index is $uvIndex"
-
-            val channelId = "notification_channel"
-            val notificationId = 1
-
-            createNotificationChannel(context, channelId)
-            showNotification(context, channelId, notificationId, message)
-        }
-    }
-
-    private fun createNotificationChannel(context: Context, channelId: String) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                channelId,
-                "UV Index Notification",
-                NotificationManager.IMPORTANCE_DEFAULT
-            )
-            val notificationManager =
-                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        }
+        val uvIndex = intent.getStringExtra("UV_INDEX")
+        showNotification(context, uvIndex)
     }
 
     @SuppressLint("MissingPermission")
-    private fun showNotification(
-        context: Context,
-        channelId: String,
-        notificationId: Int,
-        message: String
-    ) {
-        val builder = NotificationCompat.Builder(context, channelId)
+    private fun showNotification(context: Context, uvIndex: String?) {
+        val channelId = "my_channel_id"
+        val channelName = "My Channel"
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel(channelId, channelName, importance)
+            val notificationManager =
+                context.getSystemService(NotificationManager::class.java)
+            notificationManager?.createNotificationChannel(channel)
+        }
+
+        val notificationBuilder = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle("UV Index Alert")
-            .setContentText(message)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentText("Today's UV Index is $uvIndex")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
 
-        val notificationManager = NotificationManagerCompat.from(context)
-        notificationManager.notify(notificationId, builder.build())
+        val notificationManagerCompat = NotificationManagerCompat.from(context)
+        notificationManagerCompat.notify(1, notificationBuilder.build())
     }
 }

@@ -32,11 +32,11 @@ class UvViewModel : ViewModel() {
 
     private fun category() {
         val itemList = listOf(
-            UvcategoryModel(R.drawable.ic_uv_extreme, "10+", "Extreme", "Max Protection", "SPF 50+", R.drawable.ic_outfit, R.drawable.ic_sunscreen, R.drawable.ic_hat, R.drawable.ic_umbrella, R.drawable.ic_sunglasses),
-            UvcategoryModel(R.drawable.ic_uv_very_high, "7-9", "Very High", "Max Protection", "SPF 50+", R.drawable.ic_outfit, R.drawable.ic_sunscreen, R.drawable.ic_hat, R.drawable.ic_umbrella, R.drawable.ic_sunglasses),
-            UvcategoryModel(R.drawable.ic_uv_high, "4-6", "High", "High Protection", "SPF 30", R.drawable.ic_outfit, R.drawable.ic_sunscreen, R.drawable.ic_hat, R.drawable.ic_umbrella, R.drawable.ic_sunglasses),
-            UvcategoryModel(R.drawable.ic_uv_medium, "1-3", "Medium", "High Protection", "SPF 30", R.drawable.ic_outfit, R.drawable.ic_sunscreen, R.drawable.ic_hat, R.drawable.ic_umbrella, R.drawable.ic_sunglasses),
-            UvcategoryModel(R.drawable.ic_uv_low, "<1", "Low", "Min Protection", "SPF 30", R.drawable.ic_outfit, R.drawable.ic_sunscreen, R.drawable.ic_hat)
+            UvcategoryModel(R.drawable.ic_uv_extreme, "10+", "Extreme", "Max Protection", "SPF 50+", R.drawable.ic_outfit, R.drawable.ic_sunscreen_outline, R.drawable.ic_hat, R.drawable.ic_umbrella, R.drawable.ic_sunglasses),
+            UvcategoryModel(R.drawable.ic_uv_very_high, "7-9", "Very High", "Max Protection", "SPF 50+", R.drawable.ic_outfit, R.drawable.ic_sunscreen_outline, R.drawable.ic_hat, R.drawable.ic_umbrella, R.drawable.ic_sunglasses),
+            UvcategoryModel(R.drawable.ic_uv_high, "4-6", "High", "High Protection", "SPF 30", R.drawable.ic_outfit, R.drawable.ic_sunscreen_outline, R.drawable.ic_hat, R.drawable.ic_umbrella, R.drawable.ic_sunglasses),
+            UvcategoryModel(R.drawable.ic_uv_medium, "1-3", "Medium", "High Protection", "SPF 30", R.drawable.ic_outfit, R.drawable.ic_sunscreen_outline, R.drawable.ic_hat, R.drawable.ic_umbrella, R.drawable.ic_sunglasses),
+            UvcategoryModel(R.drawable.ic_uv_low, "<1", "Low", "Min Protection", "SPF 30", R.drawable.ic_outfit, R.drawable.ic_sunscreen_outline, R.drawable.ic_hat)
         )
         category.value = itemList
     }

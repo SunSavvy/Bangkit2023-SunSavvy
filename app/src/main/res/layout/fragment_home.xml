@@ -412,7 +412,7 @@
                         android:textAlignment="center"
                         android:textColor="?attr/colorSecondary"
                         android:textSize="@dimen/text_xs"
-                        app:drawableTopCompat="@drawable/ic_sunscreen" />
+                        app:drawableTopCompat="@drawable/ic_sunscreen_outline" />
 
                     <TextView
                         android:id="@+id/slogan_slap"

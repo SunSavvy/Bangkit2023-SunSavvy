@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_spf_pa,
                 R.id.nav_sun_protection,
                 R.id.nav_skin_type,
-                R.id.nav_campaign,
+                R.id.nav_sunscreen,
                 R.id.nav_about_us
             ), drawerLayout
         )

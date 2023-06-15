@@ -13,11 +13,13 @@
         android:clipChildren="false"
         android:padding="@dimen/space_lg">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_3xl"
-            android:clipChildren="true"
+            android:elevation="@dimen/elevation_lg"
+            android:outlineSpotShadowColor="?attr/colorSecondaryVariant"
+            app:cardCornerRadius="@dimen/radius_squircle_md"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -30,7 +32,7 @@
                 app:enableAutomaticInitialization="true"
                 app:videoId="WOv5HGOJYTA" />
 
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/sunsmart"
@@ -140,6 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/space_md"
+            android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"

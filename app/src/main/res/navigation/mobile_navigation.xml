@@ -42,9 +42,9 @@
         tools:layout="@layout/fragment_skintype" />
 
     <fragment
-        android:id="@+id/nav_campaign"
+        android:id="@+id/nav_sunscreen"
         android:name="com.bangkit.sunsavvy.ui.sunscreen.SunscreenFragment"
-        android:label="@string/menu_campaign"
+        android:label="@string/menu_sunscreen"
         tools:layout="@layout/fragment_sunscreen" />
 
     <fragment
