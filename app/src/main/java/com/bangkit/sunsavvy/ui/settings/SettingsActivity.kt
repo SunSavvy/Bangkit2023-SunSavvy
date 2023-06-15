@@ -1,6 +1,5 @@
 package com.bangkit.sunsavvy.ui.settings
 
-import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.os.Bundle
 import android.widget.CompoundButton
@@ -30,8 +29,6 @@ class SettingsActivity : AppCompatActivity() {
             title = getString(R.string.action_settings)
         }
 
-        // TODO("Save the dark mode and alerts")
-
         val pref = SettingPreferences.getInstance(application.dataStore)
         val settingsViewModel = ViewModelProvider(this, ViewModelFactory(pref))[SettingsViewModel::class.java]
 
@@ -45,17 +42,15 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-        settingsViewModel.getAlertSettings().observe(this) { isAlertSetting: Boolean ->
-            if (isAlertSetting) {
+        settingsViewModel.getAlertSettings().observe(this) { isAlertActive: Boolean ->
+            if (isAlertActive) {
                 val alarmHelper = AlarmHelper(this)
                 alarmHelper.setAlarms()
                 binding.switchAlerts.isChecked = true
-                //addtoast
             } else {
                 val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
                 notificationManager.cancelAll()
                 binding.switchAlerts.isChecked = false
-                //addtoast
             }
         }
 

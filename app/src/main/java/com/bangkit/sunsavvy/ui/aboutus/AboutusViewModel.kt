@@ -3,7 +3,7 @@ package com.bangkit.sunsavvy.ui.aboutus
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.data.model.TeamModel
+import com.bangkit.sunsavvy.data.localmodel.TeamModel
 
 class AboutusViewModel : ViewModel() {
     val items: MutableLiveData<List<TeamModel>> = MutableLiveData()

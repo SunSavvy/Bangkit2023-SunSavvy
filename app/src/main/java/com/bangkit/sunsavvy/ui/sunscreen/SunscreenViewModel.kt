@@ -2,7 +2,7 @@ package com.bangkit.sunsavvy.ui.sunscreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bangkit.sunsavvy.data.model.InformationModel
+import com.bangkit.sunsavvy.data.localmodel.InformationModel
 
 class SunscreenViewModel : ViewModel() {
     val information: MutableLiveData<List<InformationModel>> = MutableLiveData()

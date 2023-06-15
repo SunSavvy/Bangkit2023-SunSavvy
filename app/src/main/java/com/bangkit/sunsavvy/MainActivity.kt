@@ -2,8 +2,11 @@ package com.bangkit.sunsavvy
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
+import android.preference.PreferenceManager
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
@@ -17,7 +20,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bangkit.sunsavvy.databinding.ActivityMainBinding
-import com.bangkit.sunsavvy.notif.AlarmHelper
 import com.bangkit.sunsavvy.ui.settings.SettingsActivity
 import com.bangkit.sunsavvy.utils.StringConverter
 
@@ -27,6 +29,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerLayout: DrawerLayout
+
+    private var resultName: String? = null
+    private var resultEmail : String? = null
+    private var resultSkin : String? = null
+    private lateinit var sharedPreferences: SharedPreferences
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,21 +63,22 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
 
-        // TODO("Retrieve data user")
-        val dataUsername = "Uzumaki Icha"
-        val dataEmail = "kyubi.buntung@rawr.com"
-        val dataSkinType = 4
-
         val headerView = binding.navView.getHeaderView(0)
         val username = headerView.findViewById<TextView>(R.id.username)
         val email = headerView.findViewById<TextView>(R.id.email)
         val skinType = headerView.findViewById<TextView>(R.id.skin_type)
 
-        username.text = dataUsername
-        email.text = dataEmail
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        resultName = sharedPreferences.getString("PREF_NAME", "")
+        resultEmail = sharedPreferences.getString("PREF_EMAIL_RESULT", "")
+        resultSkin = sharedPreferences.getString("PREF_SKIN", "")
 
-        val romanNumeral = StringConverter.arabicToRoman(dataSkinType)
-        skinType.text = romanNumeral
+        Log.d("main email", "$resultEmail")
+        username.text = resultName
+        email.text = resultEmail
+
+        val romanNumeral = resultSkin?.let { StringConverter.arabicToRoman(it.toInt()) }
+        skinType.text = romanNumeral.toString()
 
         swipeRefreshLayout.setOnRefreshListener {
             Handler().postDelayed({

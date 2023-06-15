@@ -81,6 +81,10 @@
     <string name="view_our_background">Our Background</string>
     <string name="view_our_team">Our Team</string>
     <string name="view_learn_more_about_skin_type">Learn more about skin type</string>
+    <string name="view_update_profile">Edit Profile</string>
+    <string name="view_content_empty">Empty Content</string>
+    <string name="view_profile_updated">Profile updated</string>
+    <string name="view_profile_created">Profile created, please login</string>
     <string name="view_sunsmart_content">
         \t\tEstablished by Cancer Council Victoria in 1981, the Slip, Slop, Slap slogan became the core campaign for the Cancer Council’s SunSmart program in educating both young and old Australians on the importance of sun protection.
         \n\n
@@ -95,8 +99,12 @@
     <string name="button_edit_profile">Edit Profile</string>
     <string name="button_log_out">Log Out</string>
 
+    <string name="error_email_empty">Please provide email</string>
     <string name="error_email_invalid">This is not an email format</string>
     <string name="error_email_taken">This email was taken, try another email!</string>
+    <string name="error_password_empty">Please insert password</string>
+    <string name="error_password_wrong">Password did not match</string>
+    <string name="error_password_not_match">Password not match</string>
     <string name="error_password_too_short">Password too short, it must be at least 6 characters</string>
     <string name="error_skin_type">Please select your skin type</string>
 
@@ -122,7 +130,7 @@
     <string name="placeholder_uv">60%</string>
     <string name="placeholder_uv_category">Medium UV Index</string>
     <string name="placeholder_uv_category_alt">Extreme</string>
-    <string name="placeholder_uv_index_level">6.0</string>
+    <string name="placeholder_uv_index_level">0</string>
     <string name="placeholder_uv_index_level_alt">11+</string>
     <string name="placeholder_uv_protection_level">Maximum Protection</string>
     <string name="placeholder_slogan">Slip</string>

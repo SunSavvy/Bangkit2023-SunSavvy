@@ -3,7 +3,7 @@ package com.bangkit.sunsavvy.ui.skintype
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.data.model.SkintypeModel
+import com.bangkit.sunsavvy.data.localmodel.SkintypeModel
 
 class SkintypeViewModel : ViewModel() {
     val category: MutableLiveData<List<SkintypeModel>> = MutableLiveData()

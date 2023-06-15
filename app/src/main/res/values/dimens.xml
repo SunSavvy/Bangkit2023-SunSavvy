@@ -40,11 +40,4 @@
     <dimen name="radius_circle">99dp</dimen>
     <dimen name="radius_squircle_md">24dp</dimen>
     <dimen name="radius_squircle_sm">12dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-
-    <!--
-Refer to App Widget Documentation for margin information
-http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
-    -->
-    <dimen name="widget_margin">0dp</dimen>
 </resources>

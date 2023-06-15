@@ -99,13 +99,8 @@ class HomeViewModel : ViewModel() {
     }
 
     private fun fetchData() {
-
-//      TODO("Retrieve existed data, if data do not exist in database please leave it hardcoded as below")
-        username.value = "Uzumaki Icha"
+        username.value = "User"
         uvIndex.value = 3.4
-        skinType.value = 2
-        spf.value = 45
-
         uvCategory.value = when (uvIndex.value!!) {
             in 0.0..0.4 -> "Low"
             in 0.5..3.4 -> "Medium"

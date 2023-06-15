@@ -1,4 +1,4 @@
-package com.bangkit.sunsavvy.data.model
+package com.bangkit.sunsavvy.data.localmodel
 
 data class UvcategoryModel(
     val indicator: Int = 0,

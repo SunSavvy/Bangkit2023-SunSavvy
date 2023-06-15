@@ -7,7 +7,7 @@
     android:background="?attr/colorPrimary"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context=".auth.ui.SignupActivity">
+    tools:context=".ui.auth.signup.SignupActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sky"

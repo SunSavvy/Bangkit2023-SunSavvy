@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.data.model.TeamModel
+import com.bangkit.sunsavvy.data.localmodel.TeamModel
 
 class AboutusAdapter(private var items: List<TeamModel>) : RecyclerView.Adapter<AboutusAdapter.ItemViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")

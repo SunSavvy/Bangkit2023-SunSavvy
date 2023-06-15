@@ -26,12 +26,7 @@
         <receiver android:name=".notif.AlarmReceiver" />
 
         <activity
-            android:name=".ui.settings.SettingsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_splash"
-            android:theme="@style/Theme.SunSavvy.NoActionBar" />
-        <activity
-            android:name=".auth.ui.SplashActivity"
+            android:name=".ui.auth.SplashActivity"
             android:exported="true"
             android:label="@string/title_activity_splash"
             android:theme="@style/Theme.SunSavvy.Splash">
@@ -47,24 +42,24 @@
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.SunSavvy.NoActionBar" />
         <activity
-            android:name=".auth.ui.LandingActivity"
+            android:name=".ui.auth.LandingActivity"
             android:exported="false"
             android:label="@string/title_activity_landing"
             android:theme="@style/Theme.SunSavvy.FullScreen" />
         <activity
-            android:name=".auth.ui.LoginActivity"
+            android:name=".ui.auth.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.SunSavvy.FullScreen"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".auth.ui.SignupActivity"
+            android:name=".ui.auth.signup.SignupActivity"
             android:exported="false"
             android:label="@string/title_activity_signup"
             android:theme="@style/Theme.SunSavvy.FullScreen"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".auth.ui.RegisterActivity"
+            android:name=".ui.auth.register.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.SunSavvy.FullScreen"
@@ -74,7 +69,11 @@
             android:exported="false"
             android:label="@string/title_activity_skin_type"
             android:theme="@style/Theme.SunSavvy.NoActionBar" />
-
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/Theme.SunSavvy.NoActionBar" />
     </application>
 
 </manifest>

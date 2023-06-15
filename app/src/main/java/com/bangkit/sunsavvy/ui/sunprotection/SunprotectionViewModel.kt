@@ -3,7 +3,7 @@ package com.bangkit.sunsavvy.ui.sunprotection
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.data.model.SunprotectionModel
+import com.bangkit.sunsavvy.data.localmodel.SunprotectionModel
 
 class SunprotectionViewModel : ViewModel() {
     val category: MutableLiveData<List<SunprotectionModel>> = MutableLiveData()

@@ -3,6 +3,7 @@ package com.bangkit.sunsavvy.ui.home
 import android.Manifest
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.location.Address
@@ -11,6 +12,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,8 +27,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.sunsavvy.R
 import com.bangkit.sunsavvy.databinding.FragmentHomeBinding
-import com.bangkit.sunsavvy.ui.spfpa.SpfpaFragment
-import com.bangkit.sunsavvy.ui.sunprotection.SunprotectionFragment
 import com.bangkit.sunsavvy.utils.Animator
 import com.bangkit.sunsavvy.utils.GetColor
 import com.bangkit.sunsavvy.utils.StringConverter
@@ -47,6 +47,12 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: HomeViewModel
+    private lateinit var forecastViewModel: ForecastViewModel
+    private lateinit var classifyViewModel: ClassifyViewModel
+
+    private var username: String? = null
+    private var skinType: String? = null
+    private lateinit var sharedPreferences: SharedPreferences
 
     private val timeFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
     private val meridiemFormat = SimpleDateFormat("a", Locale.getDefault())
@@ -62,19 +68,22 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireActivity())
+        username = sharedPreferences.getString("PREF_NAME", "")
+
+        skinType = sharedPreferences.getString("PREF_SKIN", "")
+
+        val romanNumeral = skinType?.let { StringConverter.arabicToRoman(it.toInt()) }
+        binding.skinType.text = romanNumeral.toString()
+
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         viewModel.username.observe(viewLifecycleOwner) { username ->
             val frontName = username.split(" ")[0]
-            (requireActivity() as AppCompatActivity).supportActionBar?.title = "Hi, $frontName"
-        }
-        viewModel.uvIndex.observe(viewLifecycleOwner) { uvIndex ->
-            binding.uvIndexLevel.text = uvIndex.toString()
-            binding.uvIndexLevelAlt.text = uvIndex.toString()
+            (requireActivity() as AppCompatActivity).supportActionBar?.title = "Hi, $frontName!"
         }
         viewModel.uvCategory.observe(viewLifecycleOwner) { uvCategory ->
             binding.uvCategory.text = "$uvCategory UV Index"
-
             when (uvCategory) {
                 "Extreme" -> {
                     binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_extreme))
@@ -110,18 +119,25 @@ class HomeFragment : Fragment() {
         viewModel.sunburnTime.observe(viewLifecycleOwner) { sunburnTime ->
             binding.sunburnTime.text = sunburnTime.toString()
         }
-        viewModel.skinType.observe(viewLifecycleOwner) { skinType ->
-            val romanNumeral = StringConverter.arabicToRoman(skinType)
-            binding.skinType.text = romanNumeral
-        }
-        viewModel.spf.observe(viewLifecycleOwner) { spf ->
-            binding.spf.text = "SPF $spf"
-        }
         binding.trivia.text = viewModel.trivia.random()
         binding.cardTrivia.setOnClickListener {
             binding.trivia.text = viewModel.trivia.random()
         }
         binding.trivia.text = viewModel.trivia.random()
+
+        classifyViewModel = ViewModelProvider(this)[ClassifyViewModel::class.java]
+
+        classifyViewModel.result.observe(requireActivity()){result ->
+            if (result != null){
+                val num = result.data?.get(0)?.spf.toString()
+                binding.spf.text = "SPF $num"
+            }
+        }
+        classifyViewModel.getSUV()
+
+        getUV()
+
+        classifyViewModel = ViewModelProvider(this)[ClassifyViewModel::class.java]
 
         return root
     }
@@ -184,6 +200,55 @@ class HomeFragment : Fragment() {
         animator.start()
     }
 
+    private fun getUV() {
+        val hour = SimpleDateFormat("HH", Locale.getDefault()).format(Date())
+
+        forecastViewModel = ViewModelProvider(this)[ForecastViewModel::class.java]
+
+        val id = PreferenceManager.getDefaultSharedPreferences(requireContext()).getString("PREF_TOKEN", "")
+        forecastViewModel.getUV(id)
+
+        forecastViewModel.result.observe(requireActivity()) {result ->
+            if(result != null){
+                val uvIndex = result.data?.predictions?.get(0)?.get(hour.toInt())
+                saveUvIndex(uvIndex.toString())
+                if (uvIndex != null){
+                    binding.uvIndexLevel.text = uvIndex.toString()
+                    binding.uvIndexLevelAlt.text = uvIndex.toString()
+                    binding.uvCategory.text = when (uvIndex) {
+                        in 0.0..0.4 -> "Low"
+                        in 0.5..3.4 -> "Medium"
+                        in 3.5..6.4 -> "High"
+                        in 6.5..9.4 -> "Very High"
+                        else -> "Extreme"
+                    }
+                    when (skinType!!.toInt()) {
+                        in 0..1 -> {
+                            binding.sunburnTime.text = when (uvIndex) {
+                                in 0.0..0.9 -> "No risk of sunburn"
+                                in 1.0..3.9 -> "Over 60 minutes"
+                                in 4.0..6.9 -> "Around 30 minutes"
+                                in 7.0..9.9 -> "Around 20 minutes"
+                                else -> "Less than 15 minutes"
+                            }
+                        }
+                        else -> {
+                            binding.sunburnTime.text = when (uvIndex) {
+                                in 0.0..0.9 -> "No risk of sunburn"
+                                in 1.0..3.9 -> "Over 60 minutes"
+                                in 4.0..6.9 -> "Around 60 minutes"
+                                in 7.0..9.9 -> "Around 40 minutes"
+                                else -> "Less than 30 minutes"
+                            }
+                        }
+                    }
+                } else {
+                    binding.uvIndexLevel.text = "No Data"
+                    binding.uvIndexLevelAlt.text = "No Data"
+                }
+            }
+        }
+    }
 
     private fun getTimeNow() {
         val currentTime = timeFormat.format(Date())
@@ -191,6 +256,13 @@ class HomeFragment : Fragment() {
 
         binding.clock.text = currentTime
         binding.meridiem.text = meridiem
+    }
+
+    private fun saveUvIndex(token: String?) {
+        PreferenceManager.getDefaultSharedPreferences(requireActivity())
+            .edit()
+            .putString("PREF_INDEX", token)
+            .apply()
     }
 
     private fun startUpdatingTime() {

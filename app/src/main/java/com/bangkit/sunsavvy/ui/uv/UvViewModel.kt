@@ -3,8 +3,8 @@ package com.bangkit.sunsavvy.ui.uv
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.data.model.InformationModel
-import com.bangkit.sunsavvy.data.model.UvcategoryModel
+import com.bangkit.sunsavvy.data.localmodel.InformationModel
+import com.bangkit.sunsavvy.data.localmodel.UvcategoryModel
 
 class UvViewModel : ViewModel() {
     val information: MutableLiveData<List<InformationModel>> = MutableLiveData()

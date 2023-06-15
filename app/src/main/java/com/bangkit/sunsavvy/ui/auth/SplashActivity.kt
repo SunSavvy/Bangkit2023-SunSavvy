@@ -1,4 +1,4 @@
-package com.bangkit.sunsavvy.auth.ui
+package com.bangkit.sunsavvy.ui.auth
 
 import android.annotation.SuppressLint
 import android.app.NotificationManager
@@ -8,10 +8,13 @@ import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.preference.PreferenceManager
 import android.provider.Settings
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
+import com.bangkit.sunsavvy.MainActivity
 import com.bangkit.sunsavvy.R
 import com.bangkit.sunsavvy.data.preferences.SettingPreferences
 import com.bangkit.sunsavvy.data.preferences.ViewModelFactory
@@ -31,21 +34,28 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // TODO("Check if user logged in. If true intent to MainActivity, if false intent to LandingActivity")
-
         val packageInfo = packageManager.getPackageInfo(packageName, 0)
         val versionName = packageInfo.versionName
 
         binding.appVersion.text = "Version $versionName"
+
+        val token = PreferenceManager.getDefaultSharedPreferences(this)
+            .getString("PREF_TOKEN", null)
+        Log.d("tokenSplash", "hasil $token")
 
         Handler().postDelayed({
             val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetwork = connectivityManager.activeNetworkInfo
 
             if (activeNetwork?.isConnected == true) {
-                val intent = Intent(this, LandingActivity::class.java)
-                startActivity(intent)
-                finish()
+                if (token != null){
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                }else{
+                    val intent = Intent(this, LandingActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
             } else {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle(getString(R.string.prompt_connection_no))
@@ -68,6 +78,7 @@ class SplashActivity : AppCompatActivity() {
                 else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
+
         settingsViewModel.getAlertSettings().observe(this) {
             when (it) {
                 true -> {

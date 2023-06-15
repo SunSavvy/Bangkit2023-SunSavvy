@@ -7,7 +7,7 @@
     android:background="?attr/colorPrimary"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context=".auth.ui.LandingActivity">
+    tools:context=".ui.auth.LandingActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sky"

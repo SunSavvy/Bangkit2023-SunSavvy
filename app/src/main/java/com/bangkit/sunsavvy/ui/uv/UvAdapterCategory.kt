@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.data.model.UvcategoryModel
+import com.bangkit.sunsavvy.data.localmodel.UvcategoryModel
 
 class UvAdapterCategory(private var items: List<UvcategoryModel>) : RecyclerView.Adapter<UvAdapterCategory.ItemViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")

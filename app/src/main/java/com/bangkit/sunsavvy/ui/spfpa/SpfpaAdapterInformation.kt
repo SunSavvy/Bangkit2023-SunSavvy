@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.data.model.InformationModel
+import com.bangkit.sunsavvy.data.localmodel.InformationModel
 
 class SpfpaAdapterInformation(private var items: List<InformationModel>) : RecyclerView.Adapter<SpfpaAdapterInformation.ItemViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")

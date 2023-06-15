@@ -1,18 +1,20 @@
-package com.bangkit.sunsavvy.auth.ui
+package com.bangkit.sunsavvy.ui.auth
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.databinding.ActivitySignupBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.bangkit.sunsavvy.databinding.ActivityLandingBinding
+import com.bangkit.sunsavvy.ui.auth.login.LoginActivity
+import com.bangkit.sunsavvy.ui.auth.signup.SignupActivity
 import com.bangkit.sunsavvy.utils.OnPressed
 import com.bangkit.sunsavvy.utils.Animator
+import com.bangkit.sunsavvy.utils.GetColor.Companion.getAccentColor
+import com.bangkit.sunsavvy.utils.GetColor.Companion.getPrimaryVariantColor
 
-class SignupActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySignupBinding
+class LandingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLandingBinding
 
     private lateinit var cloudAnimators: List<Animator>
     private val speedMultipliers = listOf(0.1f, 0.3f, 0.5f)
@@ -20,23 +22,20 @@ class SignupActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignupBinding.inflate(layoutInflater)
+        binding = ActivityLandingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // TODO("User create account. If success intent to RegisterActivity, if fail make a related toast -|- ID: input_email, input_password, input_password_retype")
-
-        binding.btnSignUp.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.login.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+        binding.btnSignUp.setOnClickListener {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
+        }
 
-        OnPressed().setButtonPressedPrimary(binding.btnSignUp)
-        OnPressed().setTextPressedPrimary(binding.login, R.font.montserrat_semi_bold, R.font.montserrat_bold)
+        OnPressed().setButtonPressedPrimary(binding.btnLogin)
+        OnPressed().setButtonPressedSecondary(binding.btnSignUp, getPrimaryVariantColor(this), getAccentColor(this))
 
         animateCloud()
     }

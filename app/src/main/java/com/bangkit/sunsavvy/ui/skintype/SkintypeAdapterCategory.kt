@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.data.model.SkintypeModel
+import com.bangkit.sunsavvy.data.localmodel.SkintypeModel
 
 class SkintypeAdapterCategory(private var items: List<SkintypeModel>) : RecyclerView.Adapter<SkintypeAdapterCategory.ItemViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")

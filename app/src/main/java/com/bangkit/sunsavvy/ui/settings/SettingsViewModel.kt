@@ -24,7 +24,7 @@ class SettingsViewModel(private val pref: SettingPreferences) : ViewModel() {
 
     fun saveAlertSetting(isAlertActive: Boolean) {
         viewModelScope.launch {
-            pref.saveThemeSetting(isAlertActive)
+            pref.saveAlertSetting(isAlertActive)
         }
     }
 }

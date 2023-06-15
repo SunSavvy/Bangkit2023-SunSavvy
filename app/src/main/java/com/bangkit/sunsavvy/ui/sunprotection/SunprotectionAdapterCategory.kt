@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.sunsavvy.R
-import com.bangkit.sunsavvy.data.model.SunprotectionModel
+import com.bangkit.sunsavvy.data.localmodel.SunprotectionModel
 
 class SunprotectionAdapterCategory(private var items: List<SunprotectionModel>) : RecyclerView.Adapter<SunprotectionAdapterCategory.ItemViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")

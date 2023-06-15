@@ -2,8 +2,8 @@ package com.bangkit.sunsavvy.ui.spfpa
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bangkit.sunsavvy.data.model.InformationModel
-import com.bangkit.sunsavvy.data.model.SpfpaModel
+import com.bangkit.sunsavvy.data.localmodel.InformationModel
+import com.bangkit.sunsavvy.data.localmodel.SpfpaModel
 
 class SpfpaViewModel : ViewModel() {
     val information: MutableLiveData<List<InformationModel>> = MutableLiveData()
