@@ -9,8 +9,14 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import com.bangkit.sunsavvy.R
+import com.bangkit.sunsavvy.data.preferences.SettingPreferences
+import com.bangkit.sunsavvy.data.preferences.ViewModelFactory
+import com.bangkit.sunsavvy.data.preferences.dataStore
 import com.bangkit.sunsavvy.databinding.ActivitySplashBinding
+import com.bangkit.sunsavvy.ui.settings.SettingsViewModel
 
 @Suppress("DEPRECATION")
 @SuppressLint("CustomSplashScreen")
@@ -50,5 +56,23 @@ class SplashActivity : AppCompatActivity() {
                 builder.show()
             }
         }, 1000)
+
+        val pref = SettingPreferences.getInstance(dataStore)
+        val settingsViewModel = ViewModelProvider(this, ViewModelFactory(pref))[SettingsViewModel::class.java]
+
+        settingsViewModel.getThemeSettings().observe(this) {
+            when (it) {
+                true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+        settingsViewModel.getAlertSettings().observe(this) {
+//            when (it) {
+//                //set alert on
+////                true ->
+//                // set alert off
+////                else ->
+//            }
+        }
     }
 }

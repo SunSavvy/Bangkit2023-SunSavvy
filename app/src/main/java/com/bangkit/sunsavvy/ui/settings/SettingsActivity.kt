@@ -1,17 +1,19 @@
 package com.bangkit.sunsavvy.ui.settings
 
 import android.os.Bundle
-import androidx.activity.viewModels
+import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.sunsavvy.R
+import com.bangkit.sunsavvy.data.preferences.SettingPreferences
+import com.bangkit.sunsavvy.data.preferences.ViewModelFactory
+import com.bangkit.sunsavvy.data.preferences.dataStore
 import com.bangkit.sunsavvy.databinding.ActivitySettingsBinding
 
 @Suppress("DEPRECATION")
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
-    private val settingsViewModel: SettingsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,23 +29,39 @@ class SettingsActivity : AppCompatActivity() {
 
         // TODO("Save the dark mode and alerts")
 
-        val settingsViewModel = ViewModelProvider(this)[SettingsViewModel::class.java]
+        val pref = SettingPreferences.getInstance(application.dataStore)
+        val settingsViewModel = ViewModelProvider(this, ViewModelFactory(pref))[SettingsViewModel::class.java]
 
-        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
-            updateDarkMode(isChecked)
+        settingsViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                binding.switchTheme.isChecked = true
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                binding.switchTheme.isChecked = false
+            }
+        }
+
+        settingsViewModel.getAlertSettings().observe(this) { isAlertSetting: Boolean ->
+            if (isAlertSetting) {
+                //enable alert
+                binding.switchAlerts.isChecked = true
+            } else {
+                //disable alert
+                binding.switchAlerts.isChecked = false
+            }
+        }
+
+        binding.switchTheme.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
+            settingsViewModel.saveThemeSetting(isChecked)
+        }
+        binding.switchAlerts.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
+            settingsViewModel.saveAlertSetting(isChecked)
         }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
-    }
-
-    private fun updateDarkMode(isDarkModeActive: Boolean) {
-        if (isDarkModeActive) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
     }
 }
