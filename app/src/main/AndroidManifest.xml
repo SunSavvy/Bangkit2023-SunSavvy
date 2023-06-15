@@ -7,10 +7,10 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.MANAGE_NOTIFICATIONS"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
 
     <application
         android:name=".SunSavvy"
@@ -23,8 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SunSavvy"
         tools:targetApi="31">
-
-        <service android:name=".notif.AlarmReceiver" />
+        <receiver android:name=".notif.AlarmReceiver" />
 
         <activity
             android:name=".ui.settings.SettingsActivity"

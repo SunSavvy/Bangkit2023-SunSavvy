@@ -1,5 +1,7 @@
 package com.bangkit.sunsavvy.ui.settings
 
+import android.annotation.SuppressLint
+import android.app.NotificationManager
 import android.os.Bundle
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +12,7 @@ import com.bangkit.sunsavvy.data.preferences.SettingPreferences
 import com.bangkit.sunsavvy.data.preferences.ViewModelFactory
 import com.bangkit.sunsavvy.data.preferences.dataStore
 import com.bangkit.sunsavvy.databinding.ActivitySettingsBinding
+import com.bangkit.sunsavvy.notif.AlarmHelper
 
 @Suppress("DEPRECATION")
 class SettingsActivity : AppCompatActivity() {
@@ -44,11 +47,15 @@ class SettingsActivity : AppCompatActivity() {
 
         settingsViewModel.getAlertSettings().observe(this) { isAlertSetting: Boolean ->
             if (isAlertSetting) {
-                //enable alert
+                val alarmHelper = AlarmHelper(this)
+                alarmHelper.setAlarms()
                 binding.switchAlerts.isChecked = true
+                //addtoast
             } else {
-                //disable alert
+                val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+                notificationManager.cancelAll()
                 binding.switchAlerts.isChecked = false
+                //addtoast
             }
         }
 
