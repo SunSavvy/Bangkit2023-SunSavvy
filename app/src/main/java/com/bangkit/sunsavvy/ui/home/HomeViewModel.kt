@@ -4,12 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
-    val username: MutableLiveData<String> = MutableLiveData()
-    val uvIndex: MutableLiveData<Double> = MutableLiveData()
-    val uvCategory: MutableLiveData<String> = MutableLiveData()
-    val sunburnTime: MutableLiveData<String> = MutableLiveData()
-    val skinType: MutableLiveData<Int> = MutableLiveData()
-    val spf: MutableLiveData<Int> = MutableLiveData()
+//    val username: MutableLiveData<String> = MutableLiveData()
+//    val uvIndex: MutableLiveData<Double> = MutableLiveData()
+//    val uvCategory: MutableLiveData<String> = MutableLiveData()
+//    val sunburnTime: MutableLiveData<String> = MutableLiveData()
+//    val skinType: MutableLiveData<Int> = MutableLiveData()
+//    val spf: MutableLiveData<Int> = MutableLiveData()
     val trivia = listOf(
         "UV rays are a type of electromagnetic radiation that comes from the sun",
         "Excessive UV exposure can lead to sunburn, premature skin aging, and an increased risk of skin cancer",
@@ -94,40 +94,40 @@ class HomeViewModel : ViewModel() {
         "Seasonal changes can affect skin conditions. Always adjust skincare routines to the skin's needs in different seasons"
     )
 
-    init {
-        fetchData()
-    }
-
-    private fun fetchData() {
-        username.value = "User"
-        uvIndex.value = 3.4
-        uvCategory.value = when (uvIndex.value!!) {
-            in 0.0..0.4 -> "Low"
-            in 0.5..3.4 -> "Medium"
-            in 3.5..6.4 -> "High"
-            in 6.5..9.4 -> "Very High"
-            else -> "Extreme"
-        }
-
-        when (skinType.value) {
-            in 0..1 -> {
-                sunburnTime.value = when (uvIndex.value!!) {
-                    in 0.0..0.4 -> "No risk of sunburn"
-                    in 0.5..3.4 -> "Over 60 minutes"
-                    in 3.5..6.4 -> "Around 30 minutes"
-                    in 6.5..9.4 -> "Around 20 minutes"
-                    else -> "Less than 15 minutes"
-                }
-            }
-            else -> {
-                sunburnTime.value = when (uvIndex.value!!) {
-                    in 0.0..0.4 -> "No risk of sunburn"
-                    in 0.5..3.4 -> "Over 60 minutes"
-                    in 3.5..6.4 -> "Around 60 minutes"
-                    in 6.5..9.4 -> "Around 40 minutes"
-                    else -> "Less than 30 minutes"
-                }
-            }
-        }
-    }
+//    init {
+//        fetchData()
+//    }
+//
+//    private fun fetchData() {
+//        username.value = "User"
+//        uvIndex.value = 3.4
+//        uvCategory.value = when (uvIndex.value!!) {
+//            in 0.0..0.4 -> "Low"
+//            in 0.5..3.4 -> "Medium"
+//            in 3.5..6.4 -> "High"
+//            in 6.5..9.4 -> "Very High"
+//            else -> "Extreme"
+//        }
+//
+//        when (skinType.value) {
+//            in 0..1 -> {
+//                sunburnTime.value = when (uvIndex.value!!) {
+//                    in 0.0..0.4 -> "No risk of sunburn"
+//                    in 0.5..3.4 -> "Over 60 minutes"
+//                    in 3.5..6.4 -> "Around 30 minutes"
+//                    in 6.5..9.4 -> "Around 20 minutes"
+//                    else -> "Less than 15 minutes"
+//                }
+//            }
+//            else -> {
+//                sunburnTime.value = when (uvIndex.value!!) {
+//                    in 0.0..0.4 -> "No risk of sunburn"
+//                    in 0.5..3.4 -> "Over 60 minutes"
+//                    in 3.5..6.4 -> "Around 60 minutes"
+//                    in 6.5..9.4 -> "Around 40 minutes"
+//                    else -> "Less than 30 minutes"
+//                }
+//            }
+//        }
+//    }
 }

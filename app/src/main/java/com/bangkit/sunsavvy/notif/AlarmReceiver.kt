@@ -17,8 +17,7 @@ class AlarmReceiver : BroadcastReceiver() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == "ALARM_ACTION") {
-            val uvIndex = intent.getStringExtra("UV_INDEX")
-            val message = "Today's UV Index is $uvIndex"
+            val message = "Don't forget to check today's UV Index"
 
             val channelId = "notification_channel"
             val notificationId = 1

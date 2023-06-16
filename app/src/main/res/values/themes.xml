@@ -106,8 +106,6 @@
     <!-- Dialog -->
     <style name="Dialog.Primary" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowBackground">?attr/colorPrimaryVariant</item>
-        <item name="android:textColorPrimary">?attr/colorAccent</item>
-        <item name="android:textColorSecondary">?attr/colorSecondary</item>
-        <item name="android:textColorAlertDialogListItem">?attr/colorOnPrimary</item>
+        <item name="android:textColorAlertDialogListItem">?attr/colorAccent</item>
     </style>
 </resources>

@@ -62,6 +62,17 @@ class HomeFragment : Fragment() {
     private val speedMultipliers = listOf(0.1f, 0.3f, 0.5f)
     var fusedLocationProviderClient: FusedLocationProviderClient? = null
 
+    @Deprecated("Deprecated in Java")
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireActivity())
+        username = sharedPreferences.getString("PREF_NAME", "")
+        val frontName = username!!.split(" ")[0]
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Hi, $frontName!"
+        activity?.title = "Hi, $frontName!"
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -69,8 +80,6 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireActivity())
-        username = sharedPreferences.getString("PREF_NAME", "")
-
         skinType = sharedPreferences.getString("PREF_SKIN", "")
 
         val romanNumeral = skinType?.let { StringConverter.arabicToRoman(it.toInt()) }
@@ -78,47 +87,6 @@ class HomeFragment : Fragment() {
 
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
-        viewModel.username.observe(viewLifecycleOwner) { username ->
-            val frontName = username.split(" ")[0]
-            (requireActivity() as AppCompatActivity).supportActionBar?.title = "Hi, $frontName!"
-        }
-        viewModel.uvCategory.observe(viewLifecycleOwner) { uvCategory ->
-            binding.uvCategory.text = "$uvCategory UV Index"
-            when (uvCategory) {
-                "Extreme" -> {
-                    binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_extreme))
-                    val slogans = listOf(binding.sloganSlip, binding.sloganSlop, binding.sloganSlap, binding.sloganSeek, binding.sloganSlide)
-                    for (slogan in slogans) {
-                        onSlogan(slogan)
-                    }
-                }
-                "Very High" -> {
-                    binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_very_high))
-                    val slogans = listOf(binding.sloganSlip, binding.sloganSlop, binding.sloganSlap, binding.sloganSlide)
-                    for (slogan in slogans) {
-                        onSlogan(slogan)
-                    }
-                }
-                "High" -> {
-                    binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_high))
-                    val slogans = listOf(binding.sloganSlop, binding.sloganSlap, binding.sloganSlide)
-                    for (slogan in slogans) {
-                        onSlogan(slogan)
-                    }
-                }
-                "Medium" -> {
-                    binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_medium))
-                    val slogans = listOf(binding.sloganSlop, binding.sloganSlide)
-                    for (slogan in slogans) {
-                        onSlogan(slogan)
-                    }
-                }
-                "Low" -> binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_low))
-            }
-        }
-        viewModel.sunburnTime.observe(viewLifecycleOwner) { sunburnTime ->
-            binding.sunburnTime.text = sunburnTime.toString()
-        }
         binding.trivia.text = viewModel.trivia.random()
         binding.cardTrivia.setOnClickListener {
             binding.trivia.text = viewModel.trivia.random()
@@ -129,6 +97,7 @@ class HomeFragment : Fragment() {
 
         classifyViewModel.result.observe(requireActivity()){result ->
             if (result != null){
+//                TODO("Get Real SPF Recommendation")
                 val num = result.data?.get(0)?.spf.toString()
                 binding.spf.text = "SPF $num"
             }
@@ -200,6 +169,8 @@ class HomeFragment : Fragment() {
         animator.start()
     }
 
+    @SuppressLint("SetTextI18n")
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun getUV() {
         val hour = SimpleDateFormat("HH", Locale.getDefault()).format(Date())
 
@@ -208,23 +179,58 @@ class HomeFragment : Fragment() {
         val id = PreferenceManager.getDefaultSharedPreferences(requireContext()).getString("PREF_TOKEN", "")
         forecastViewModel.getUV(id)
 
-        forecastViewModel.result.observe(requireActivity()) {result ->
-            if(result != null){
-                val uvIndex = result.data?.predictions?.get(0)?.get(hour.toInt())
-                saveUvIndex(uvIndex.toString())
-                if (uvIndex != null){
+//        forecastViewModel.result.observe(requireActivity()) {result ->
+//            if(result != null){
+//                TODO("Get Real UV Index")
+                val uvIndex = 9.9
+//                val uvIndex = result.data?.predictions?.get(0)?.get(hour.toInt())
+//                saveUvIndex(uvIndex.toString())
+//                if (uvIndex != null){
                     binding.uvIndexLevel.text = uvIndex.toString()
                     binding.uvIndexLevelAlt.text = uvIndex.toString()
-                    binding.uvCategory.text = when (uvIndex) {
+                    val uvCategory = when (uvIndex.toDouble()) {
                         in 0.0..0.4 -> "Low"
                         in 0.5..3.4 -> "Medium"
                         in 3.5..6.4 -> "High"
                         in 6.5..9.4 -> "Very High"
                         else -> "Extreme"
                     }
+                    binding.uvCategory.text = "$uvCategory UV Index"
+                    when (uvCategory) {
+                        "Extreme" -> {
+                            binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_extreme))
+                            val slogans = listOf(binding.sloganSlip, binding.sloganSlop, binding.sloganSlap, binding.sloganSeek, binding.sloganSlide)
+                            for (slogan in slogans) {
+                                onSlogan(slogan)
+                            }
+                        }
+                        "Very High" -> {
+                            binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_very_high))
+                            val slogans = listOf(binding.sloganSlip, binding.sloganSlop, binding.sloganSlap, binding.sloganSlide)
+                            for (slogan in slogans) {
+                                onSlogan(slogan)
+                            }
+                        }
+                        "High" -> {
+                            binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_high))
+                            val slogans = listOf(binding.sloganSlop, binding.sloganSlap, binding.sloganSlide)
+                            for (slogan in slogans) {
+                                onSlogan(slogan)
+                            }
+                        }
+                        "Medium" -> {
+                            binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_medium))
+                            val slogans = listOf(binding.sloganSlop, binding.sloganSlide)
+                            for (slogan in slogans) {
+                                onSlogan(slogan)
+                            }
+                        }
+                        "Low" -> binding.uvIndexLevelAlt.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.uv_low))
+                    }
+
                     when (skinType!!.toInt()) {
                         in 0..1 -> {
-                            binding.sunburnTime.text = when (uvIndex) {
+                            binding.sunburnTime.text = when (uvIndex.toDouble()) {
                                 in 0.0..0.9 -> "No risk of sunburn"
                                 in 1.0..3.9 -> "Over 60 minutes"
                                 in 4.0..6.9 -> "Around 30 minutes"
@@ -233,7 +239,7 @@ class HomeFragment : Fragment() {
                             }
                         }
                         else -> {
-                            binding.sunburnTime.text = when (uvIndex) {
+                            binding.sunburnTime.text = when (uvIndex.toDouble()) {
                                 in 0.0..0.9 -> "No risk of sunburn"
                                 in 1.0..3.9 -> "Over 60 minutes"
                                 in 4.0..6.9 -> "Around 60 minutes"
@@ -242,12 +248,12 @@ class HomeFragment : Fragment() {
                             }
                         }
                     }
-                } else {
-                    binding.uvIndexLevel.text = "No Data"
-                    binding.uvIndexLevelAlt.text = "No Data"
-                }
-            }
-        }
+//                } else {
+//                    binding.uvIndexLevel.text = "No Data"
+//                    binding.uvIndexLevelAlt.text = "No Data"
+//                }
+//            }
+//        }
     }
 
     private fun getTimeNow() {

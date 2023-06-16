@@ -57,7 +57,7 @@ class SplashActivity : AppCompatActivity() {
                     finish()
                 }
             } else {
-                val builder = AlertDialog.Builder(this)
+                val builder = AlertDialog.Builder(this, R.style.Dialog_Primary)
                 builder.setTitle(getString(R.string.prompt_connection_no))
                 builder.setMessage(getString(R.string.prompt_connection_check))
                 builder.setPositiveButton(getString(R.string.prompt_connection_connect)) { _, _ ->
@@ -82,12 +82,12 @@ class SplashActivity : AppCompatActivity() {
         settingsViewModel.getAlertSettings().observe(this) {
             when (it) {
                 true -> {
-                    val alarmHelper = AlarmHelper(this)
-                    alarmHelper.setAlarms()
+//                    val alarmHelper = AlarmHelper(this)
+//                    alarmHelper.setAlarms()
                 }
                 else -> {
-                    val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-                    notificationManager.cancelAll()
+//                    val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+//                    notificationManager.cancelAll()
                 }
             }
         }

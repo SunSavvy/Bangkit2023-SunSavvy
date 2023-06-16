@@ -13,13 +13,9 @@ class AlarmHelper(private val context: Context) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         for (time in alarmTimes) {
-        // TODO("Retrieve uv index at the time")
-            val uvIndex = 4
-
             val alarmTime = getTimeInMillis(time)
             val intent = Intent(context, AlarmReceiver::class.java).apply {
                 action = "ALARM_ACTION"
-                putExtra("UV_INDEX", uvIndex)
             }
             val pendingIntent = PendingIntent.getBroadcast(
                 context,
