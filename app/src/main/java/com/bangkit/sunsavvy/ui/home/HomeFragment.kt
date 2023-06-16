@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.preference.PreferenceManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,11 +29,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.sunsavvy.R
 import com.bangkit.sunsavvy.databinding.FragmentHomeBinding
 import com.bangkit.sunsavvy.utils.Animator
+import com.bangkit.sunsavvy.utils.CustomDialog
 import com.bangkit.sunsavvy.utils.GetColor
 import com.bangkit.sunsavvy.utils.StringConverter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import java.io.IOException
+import java.math.BigDecimal
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -79,6 +82,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        showLoading(true)
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireActivity())
         skinType = sharedPreferences.getString("PREF_SKIN", "")
 
@@ -97,7 +102,6 @@ class HomeFragment : Fragment() {
 
         classifyViewModel.result.observe(requireActivity()){result ->
             if (result != null){
-//                TODO("Get Real SPF Recommendation")
                 val num = result.data?.get(0)?.spf.toString()
                 binding.spf.text = "SPF $num"
             }
@@ -169,9 +173,24 @@ class HomeFragment : Fragment() {
         animator.start()
     }
 
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.progressBar2.visibility = View.VISIBLE
+            binding.uvIndexLevel.visibility = View.INVISIBLE
+            binding.uvIndexLevelAlt.visibility = View.INVISIBLE
+        } else {
+            binding.progressBar.visibility = View.INVISIBLE
+            binding.progressBar2.visibility = View.INVISIBLE
+            binding.uvIndexLevel.visibility = View.VISIBLE
+            binding.uvIndexLevelAlt.visibility = View.VISIBLE
+        }
+    }
+
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getUV() {
+
         val hour = SimpleDateFormat("HH", Locale.getDefault()).format(Date())
 
         forecastViewModel = ViewModelProvider(this)[ForecastViewModel::class.java]
@@ -179,16 +198,17 @@ class HomeFragment : Fragment() {
         val id = PreferenceManager.getDefaultSharedPreferences(requireContext()).getString("PREF_TOKEN", "")
         forecastViewModel.getUV(id)
 
-//        forecastViewModel.result.observe(requireActivity()) {result ->
-//            if(result != null){
-//                TODO("Get Real UV Index")
-                val uvIndex = 9.9
-//                val uvIndex = result.data?.predictions?.get(0)?.get(hour.toInt())
-//                saveUvIndex(uvIndex.toString())
-//                if (uvIndex != null){
-                    binding.uvIndexLevel.text = uvIndex.toString()
-                    binding.uvIndexLevelAlt.text = uvIndex.toString()
-                    val uvCategory = when (uvIndex.toDouble()) {
+        forecastViewModel.result.observe(requireActivity()) { result ->
+            if (result != null) {
+                val uvIndex = result.data?.predictions?.get(0)?.get(hour.toInt())
+                saveUvIndex(uvIndex.toString())
+
+                if (uvIndex != null) {
+                    val uvIndexTrimmed = BigDecimal(uvIndex).setScale(1, BigDecimal.ROUND_HALF_UP)
+
+                    binding.uvIndexLevel.text = uvIndexTrimmed.toString()
+                    binding.uvIndexLevelAlt.text = uvIndexTrimmed.toString()
+                    val uvCategory = when (uvIndexTrimmed.toDouble()) {
                         in 0.0..0.4 -> "Low"
                         in 0.5..3.4 -> "Medium"
                         in 3.5..6.4 -> "High"
@@ -230,7 +250,7 @@ class HomeFragment : Fragment() {
 
                     when (skinType!!.toInt()) {
                         in 0..1 -> {
-                            binding.sunburnTime.text = when (uvIndex.toDouble()) {
+                            binding.sunburnTime.text = when (uvIndexTrimmed.toDouble()) {
                                 in 0.0..0.9 -> "No risk of sunburn"
                                 in 1.0..3.9 -> "Over 60 minutes"
                                 in 4.0..6.9 -> "Around 30 minutes"
@@ -239,7 +259,7 @@ class HomeFragment : Fragment() {
                             }
                         }
                         else -> {
-                            binding.sunburnTime.text = when (uvIndex.toDouble()) {
+                            binding.sunburnTime.text = when (uvIndexTrimmed.toDouble()) {
                                 in 0.0..0.9 -> "No risk of sunburn"
                                 in 1.0..3.9 -> "Over 60 minutes"
                                 in 4.0..6.9 -> "Around 60 minutes"
@@ -248,12 +268,10 @@ class HomeFragment : Fragment() {
                             }
                         }
                     }
-//                } else {
-//                    binding.uvIndexLevel.text = "No Data"
-//                    binding.uvIndexLevelAlt.text = "No Data"
-//                }
-//            }
-//        }
+                }
+                showLoading(false)
+            }
+        }
     }
 
     private fun getTimeNow() {
@@ -295,6 +313,10 @@ class HomeFragment : Fragment() {
                     try {
                         addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
                         binding.location.text = addresses!![0].adminArea
+
+                        forecastViewModel.setAdminArea(addresses[0].adminArea)
+                        forecastViewModel.setLatitude(location.latitude)
+                        forecastViewModel.setLongitude(location.longitude)
                     } catch (e: IOException) {
                         e.printStackTrace()
                     }

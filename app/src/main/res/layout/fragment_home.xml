@@ -58,6 +58,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/uv_index_level"
+            app:layout_constraintEnd_toEndOf="@+id/uv_index_level"
+            app:layout_constraintStart_toStartOf="@+id/uv_index_level"
+            app:layout_constraintTop_toTopOf="@+id/uv_index_level" />
+
         <TextView
             android:id="@+id/uv_index_level"
             android:layout_width="wrap_content"
@@ -150,6 +159,15 @@
                 android:textSize="@dimen/text_md"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/location" />
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/uv_index_level_alt"
+                app:layout_constraintEnd_toEndOf="@+id/uv_index_level_alt"
+                app:layout_constraintStart_toStartOf="@+id/uv_index_level_alt"
+                app:layout_constraintTop_toTopOf="@+id/uv_index_level_alt" />
 
             <TextView
                 android:id="@+id/uv_index_level_alt"
