@@ -12,6 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@Suppress("DEPRECATION")
 class RegisterViewModel(application: Application) : AndroidViewModel(application) {
     val registrationResult = MutableLiveData<PreferenceResponse?>()
 

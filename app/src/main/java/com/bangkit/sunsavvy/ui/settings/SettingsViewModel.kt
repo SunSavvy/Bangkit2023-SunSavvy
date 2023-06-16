@@ -17,14 +17,4 @@ class SettingsViewModel(private val pref: SettingPreferences) : ViewModel() {
             pref.saveThemeSetting(isDarkModeActive)
         }
     }
-
-    fun getAlertSettings(): LiveData<Boolean> {
-        return pref.getAlertSetting().asLiveData()
-    }
-
-    fun saveAlertSetting(isAlertActive: Boolean) {
-        viewModelScope.launch {
-            pref.saveAlertSetting(isAlertActive)
-        }
-    }
 }

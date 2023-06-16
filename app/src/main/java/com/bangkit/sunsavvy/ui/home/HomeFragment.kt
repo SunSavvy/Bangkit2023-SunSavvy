@@ -13,7 +13,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.preference.PreferenceManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +28,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.sunsavvy.R
 import com.bangkit.sunsavvy.databinding.FragmentHomeBinding
 import com.bangkit.sunsavvy.utils.Animator
-import com.bangkit.sunsavvy.utils.CustomDialog
 import com.bangkit.sunsavvy.utils.GetColor
 import com.bangkit.sunsavvy.utils.StringConverter
 import com.google.android.gms.location.FusedLocationProviderClient

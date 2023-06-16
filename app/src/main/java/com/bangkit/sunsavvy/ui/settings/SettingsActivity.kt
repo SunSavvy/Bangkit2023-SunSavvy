@@ -1,6 +1,5 @@
 package com.bangkit.sunsavvy.ui.settings
 
-import android.app.NotificationManager
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
@@ -17,7 +16,6 @@ import com.bangkit.sunsavvy.data.preferences.SettingPreferences
 import com.bangkit.sunsavvy.data.preferences.ViewModelFactory
 import com.bangkit.sunsavvy.data.preferences.dataStore
 import com.bangkit.sunsavvy.databinding.ActivitySettingsBinding
-import com.bangkit.sunsavvy.notif.AlarmHelper
 import com.bangkit.sunsavvy.ui.auth.SplashActivity
 import com.bangkit.sunsavvy.utils.GetColor
 import com.bangkit.sunsavvy.utils.OnPressed
@@ -53,24 +51,9 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-        settingsViewModel.getAlertSettings().observe(this) { isAlertActive: Boolean ->
-//            if (isAlertActive) {
-////                val alarmHelper = AlarmHelper(this)
-////                alarmHelper.setAlarms()
-//                binding.switchAlerts.isChecked = true
-//            } else {
-////                val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-////                notificationManager.cancelAll()
-//                binding.switchAlerts.isChecked = false
-//            }
-        }
-
         binding.switchTheme.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
             settingsViewModel.saveThemeSetting(isChecked)
         }
-//        binding.switchAlerts.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
-//            settingsViewModel.saveAlertSetting(isChecked)
-//        }
 
         binding.btnLogOut.setOnClickListener {
             val builder = AlertDialog.Builder(this, R.style.Dialog_Primary)

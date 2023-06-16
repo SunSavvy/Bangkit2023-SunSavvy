@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_profile"
-        android:name="com.bangkit.sunsavvy.ui.profile.ProfileFragment"
-        android:label="@string/menu_profile"
-        tools:layout="@layout/fragment_profile" />
-
-    <fragment
         android:id="@+id/nav_uv"
         android:name="com.bangkit.sunsavvy.ui.uv.UvFragment"
         android:label="@string/menu_uv"

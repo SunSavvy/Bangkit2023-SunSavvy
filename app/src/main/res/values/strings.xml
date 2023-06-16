@@ -37,7 +37,7 @@
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="hint_password_retype">Retype Password</string>
-    <string name="hint_username">Userame</string>
+    <string name="hint_username">Username</string>
     <string name="hint_skin_type">Skin Type</string>
 
     <string name="view_or">or</string>

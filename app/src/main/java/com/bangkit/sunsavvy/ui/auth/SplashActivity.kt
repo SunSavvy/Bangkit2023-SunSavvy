@@ -1,7 +1,6 @@
 package com.bangkit.sunsavvy.ui.auth
 
 import android.annotation.SuppressLint
-import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -20,7 +19,6 @@ import com.bangkit.sunsavvy.data.preferences.SettingPreferences
 import com.bangkit.sunsavvy.data.preferences.ViewModelFactory
 import com.bangkit.sunsavvy.data.preferences.dataStore
 import com.bangkit.sunsavvy.databinding.ActivitySplashBinding
-import com.bangkit.sunsavvy.notif.AlarmHelper
 import com.bangkit.sunsavvy.ui.settings.SettingsViewModel
 
 @Suppress("DEPRECATION")
@@ -76,19 +74,6 @@ class SplashActivity : AppCompatActivity() {
             when (it) {
                 true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-        }
-
-        settingsViewModel.getAlertSettings().observe(this) {
-            when (it) {
-                true -> {
-//                    val alarmHelper = AlarmHelper(this)
-//                    alarmHelper.setAlarms()
-                }
-                else -> {
-//                    val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-//                    notificationManager.cancelAll()
-                }
             }
         }
     }

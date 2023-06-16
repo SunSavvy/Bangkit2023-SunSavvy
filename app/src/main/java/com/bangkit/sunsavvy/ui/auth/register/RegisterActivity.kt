@@ -6,13 +6,10 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.util.Log
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.sunsavvy.MainActivity
 import com.bangkit.sunsavvy.R
@@ -22,6 +19,7 @@ import com.bangkit.sunsavvy.ui.skintype.SkintypeActivity
 import com.bangkit.sunsavvy.utils.Animator
 import com.bangkit.sunsavvy.utils.OnPressed
 
+@Suppress("DEPRECATION")
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var registerViewModel: RegisterViewModel
@@ -108,8 +106,7 @@ class RegisterActivity : AppCompatActivity() {
 
         val name = binding.inputUsername.text.toString().trim()
 
-        val textFieldValue = (binding.inputSkinType as? AutoCompleteTextView)?.text.toString()
-        val skintype: String = when (textFieldValue) {
+        val skintype: String = when ((binding.inputSkinType as? AutoCompleteTextView)?.text.toString()) {
             "Skin Type I" -> "1"
             "Skin Type II" ->"2"
             "Skin Type III" -> "3"

@@ -5,9 +5,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.util.Log
 import android.util.Patterns
-import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.sunsavvy.MainActivity
@@ -18,6 +16,7 @@ import com.bangkit.sunsavvy.utils.OnPressed
 import com.bangkit.sunsavvy.utils.Animator
 import com.bangkit.sunsavvy.utils.CustomDialog
 
+@Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var loginViewModel: LoginViewModel
