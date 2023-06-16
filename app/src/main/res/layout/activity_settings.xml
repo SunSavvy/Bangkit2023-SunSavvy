@@ -38,12 +38,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/switch_theme" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/hairline"
-            android:background="?attr/colorSecondaryVariant"
-            app:layout_constraintBottom_toTopOf="@+id/switch_alerts"
-            app:layout_constraintTop_toBottomOf="@+id/switch_theme" />
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/hairline"-->
+<!--            android:background="?attr/colorSecondaryVariant"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/switch_alerts"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/switch_theme" />-->
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switch_theme"
@@ -52,29 +52,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txt_alerts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawablePadding="@dimen/space_md"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="@string/view_alerts"
-            android:textAlignment="textStart"
-            android:textAllCaps="false"
-            android:textColor="?attr/colorOnPrimary"
-            android:textSize="@dimen/text_md"
-            app:drawableStartCompat="@drawable/ic_bell"
-            app:layout_constraintBottom_toBottomOf="@+id/switch_alerts"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/switch_alerts" />
+<!--        <TextView-->
+<!--            android:id="@+id/txt_alerts"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawablePadding="@dimen/space_md"-->
+<!--            android:fontFamily="@font/montserrat_medium"-->
+<!--            android:text="@string/view_alerts"-->
+<!--            android:textAlignment="textStart"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="?attr/colorOnPrimary"-->
+<!--            android:textSize="@dimen/text_md"-->
+<!--            app:drawableStartCompat="@drawable/ic_bell"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/switch_alerts"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/switch_alerts" />-->
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/switch_alerts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_lg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switch_theme" />
+<!--        <com.google.android.material.switchmaterial.SwitchMaterial-->
+<!--            android:id="@+id/switch_alerts"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/space_lg"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/switch_theme" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

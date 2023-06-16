@@ -54,23 +54,23 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         settingsViewModel.getAlertSettings().observe(this) { isAlertActive: Boolean ->
-            if (isAlertActive) {
-//                val alarmHelper = AlarmHelper(this)
-//                alarmHelper.setAlarms()
-                binding.switchAlerts.isChecked = true
-            } else {
-//                val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-//                notificationManager.cancelAll()
-                binding.switchAlerts.isChecked = false
-            }
+//            if (isAlertActive) {
+////                val alarmHelper = AlarmHelper(this)
+////                alarmHelper.setAlarms()
+//                binding.switchAlerts.isChecked = true
+//            } else {
+////                val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+////                notificationManager.cancelAll()
+//                binding.switchAlerts.isChecked = false
+//            }
         }
 
         binding.switchTheme.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
             settingsViewModel.saveThemeSetting(isChecked)
         }
-        binding.switchAlerts.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
-            settingsViewModel.saveAlertSetting(isChecked)
-        }
+//        binding.switchAlerts.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
+//            settingsViewModel.saveAlertSetting(isChecked)
+//        }
 
         binding.btnLogOut.setOnClickListener {
             val builder = AlertDialog.Builder(this, R.style.Dialog_Primary)

@@ -87,6 +87,9 @@ class MainActivity : AppCompatActivity() {
                 swipeRefreshLayout.isRefreshing = false
             }, 500)
         }
+
+        val alarmHelper = AlarmHelper(this)
+        alarmHelper.setAlarms()
     }
 
     override fun onSupportNavigateUp(): Boolean {

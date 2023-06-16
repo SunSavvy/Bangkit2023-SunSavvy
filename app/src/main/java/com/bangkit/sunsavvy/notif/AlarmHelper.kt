@@ -9,7 +9,7 @@ import java.util.*
 class AlarmHelper(private val context: Context) {
 
     fun setAlarms() {
-        val alarmTimes = listOf("05:00", "07:00", "09:00", "11:00", "13:00", "15:00", "17:00", "19:00")
+        val alarmTimes = listOf("05:30", "07:30", "09:30", "11:30", "13:30", "15:30", "17:30")
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         for (time in alarmTimes) {
